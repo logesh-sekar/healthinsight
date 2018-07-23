@@ -11,7 +11,8 @@ import { TablesComponent } from './tables/tables.component';
 import { PageHeaderModule } from '../shared/modules/page-header/page-header.module';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { ProgramcreatorComponent } from './programcreator/programcreator.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     imports: [
         CommonModule,
@@ -20,8 +21,10 @@ import { DropdownModule } from 'primeng/dropdown';
         TableModule,
         DropdownModule,
         PageHeaderModule,
+        ReactiveFormsModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, TablesComponent],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, TablesComponent, ProgramcreatorComponent],
+
 })
 export class LayoutModule {}
