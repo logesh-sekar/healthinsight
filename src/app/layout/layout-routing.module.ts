@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-
+import { TablesComponent } from './tables/tables.component';
 const routes: Routes = [
     {
         path: '',
@@ -9,7 +9,7 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+            { path: 'member-gap-list', component: TablesComponent },
         ]
     }
 ];
