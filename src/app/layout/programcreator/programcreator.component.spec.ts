@@ -1,14 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ProgramcreatorComponent } from './programcreator.component';
-
+import { HttpErrorHandler } from '../../shared/services/http-error-handler.service';
+import { MessageService } from '../../shared/services/message.service';
 describe('ProgramcreatorComponent', () => {
   let component: ProgramcreatorComponent;
   let fixture: ComponentFixture<ProgramcreatorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProgramcreatorComponent ]
+      imports: [  HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule ],
+      declarations: [ ProgramcreatorComponent ],
+      providers: [HttpErrorHandler, MessageService]
     })
     .compileComponents();
   }));
