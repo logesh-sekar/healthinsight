@@ -5,12 +5,12 @@ import { GapsService } from '../../shared/services/gaps.service';
 
 @Component({
     selector: 'app-tables',
-    templateUrl: './tables.component.html',
-    styleUrls: ['./tables.component.scss'],
+    templateUrl: './member-gaplist.component.html',
+    styleUrls: ['./member-gaplist.component.scss'],
     animations: [routerTransition()],
     providers: [GapsService]
 })
-export class TablesComponent implements OnInit {
+export class MemberGapListComponent implements OnInit {
     constructor(private gapsService: GapsService) {}
     gaps: Gaps[];
     cols: any[];

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Gaps } from '../../shared/services/gaps.data';
+import { Gaps } from './gaps.data';
 
 @Injectable()
 export class GapsService {

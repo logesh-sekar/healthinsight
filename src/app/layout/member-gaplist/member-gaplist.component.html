@@ -1,0 +1,74 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Member Gaps List'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-6 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row card-text">
+                        <div class="col font-weight-bold">
+                            MID
+                        </div>
+                        <div class="col">
+                            PI72182
+                        </div>
+                        <div class="col font-weight-bold">
+                            Name
+                        </div>
+                        <div class="col">
+                            John Doe
+                        </div>
+                    </div>
+                    <div class="row card-text">
+                        <div class="col font-weight-bold">
+                            Gender
+                        </div>
+                        <div class="col">
+                            Male
+                        </div>
+                        <div class="col font-weight-bold">
+                            DOB
+                        </div>
+                        <div class="col">
+                            15 Jan, 2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12">
+                <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left">Export</button>
+            <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps" [columns]="cols" [paginator]="true" [rows]="5">
+                <ng-template pTemplate="header" >
+                    <tr>
+                        <th *ngFor="let col of cols" [pSortableColumn]="col.field" >
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of cols" [ngSwitch]="col.field">
+                            <input *ngSwitchDefault pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                            <p-dropdown *ngSwitchCase="'status'" [options]="statusTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                            <p-dropdown *ngSwitchCase="'priority'" [options]="priorityTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+                        <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <a *ngSwitchCase="'care_gaps'" [routerLink]="['/member-gap/', rowData.id]">
+                                {{rowData[col.field]}}
+                            </a>
+                            <span *ngSwitchDefault>
+                                    {{rowData[col.field]}}
+                            </span>
+                           
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

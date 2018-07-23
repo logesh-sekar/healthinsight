@@ -7,7 +7,9 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TablesComponent } from './tables/tables.component';
+import { MemberGapListComponent } from './member-gaplist/member-gaplist.component';
+import { MemberGapInfoComponent } from './member-gaplist/member-gap-info/member-gap-info.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageHeaderModule } from '../shared/modules/page-header/page-header.module';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
@@ -24,7 +26,13 @@ import { ReactiveFormsModule } from '@angular/forms';
         ReactiveFormsModule,
         NgbDropdownModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, TablesComponent, ProgramcreatorComponent],
+    declarations: [LayoutComponent,
+        SidebarComponent,
+        HeaderComponent,
+        MemberGapListComponent,
+        DashboardComponent,
+        MemberGapInfoComponent,
+        ProgramcreatorComponent],
 
 })
 export class LayoutModule {}
