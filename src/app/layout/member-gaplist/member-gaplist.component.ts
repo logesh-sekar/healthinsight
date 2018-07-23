@@ -14,8 +14,17 @@ export class MemberGapListComponent implements OnInit {
     constructor(private gapsService: GapsService) {}
     gaps: Gaps[];
     cols: any[];
-    statusTypes =  [ { label: 'Open', value: 'Open' }, { label: 'Closed', value: 'Closed' }];
-    priorityTypes =  [ { label: 'High', value: 'High' }, { label: 'Low', value: 'Low' }, { label: 'Medium', value: 'Medium' }];
+    statusTypes =  [
+        { label: 'Select', value: '' },
+        { label: 'Open', value: 'Open' },
+        { label: 'Closed', value: 'Closed' }
+    ];
+    priorityTypes =  [
+        { label: 'Select', value: '' },
+        { label: 'High', value: 'High' },
+        { label: 'Low', value: 'Low' },
+        { label: 'Medium', value: 'Medium' }
+    ];
 
     ngOnInit() {
         this.gapsService.getGaps().subscribe((data: Gaps[]) => {

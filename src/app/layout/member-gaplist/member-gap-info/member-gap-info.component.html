@@ -50,17 +50,26 @@
                 <tbody >
                     <tr>
                         <td *ngFor="let col of cols" [ngSwitch]="col.field">
-                            <!-- <a *ngSwitchCase="'care_gaps'"> -->
+                            <span *ngSwitchCase="'care_gaps'"> 
                                 {{gaps[col.field]}}
-                            <!-- </a>
+                            </span>
+                            <p-dropdown *ngSwitchCase="'status'" [(ngModel)]="gaps[col.field]" [options]="statusTypes" [style]="{'width':'100%'}" ></p-dropdown>
+                            <p-dropdown *ngSwitchCase="'priority'" [(ngModel)]="gaps[col.field]" [options]="priorityTypes" [style]="{'width':'100%'}" ></p-dropdown>
                             <span *ngSwitchDefault>
-                                    {{gaps[col.field]}}
-                            </span> -->
+                                <textarea [(ngModel)]="gaps[col.field]" [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize"></textarea>
+                            </span> 
                            
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <p-fileUpload name="myfile[]" url="#" multiple="multiple" accept="image/*" maxFileSize="1000000"></p-fileUpload>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-lg-12 text-right ">
+            <button pButton type="button" label="Submit" class="ui-button-success m-2"></button>
+            <button pButton type="button" label="Cancel" class="ui-button-secondary m-2"></button>
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col col-lg-12">
-                <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export" (click)="dt.exportCSV()" style="float:left">Export</button>
+            <button type="button" pButton  label="Export" (click)="dt.exportCSV()" style="float:left"></button>
             <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps" [columns]="cols" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="header" >
                     <tr>
@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <th *ngFor="let col of cols" [ngSwitch]="col.field">
-                            <input *ngSwitchDefault pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                            <!-- <input *ngSwitchDefault pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)"> -->
                             <p-dropdown *ngSwitchCase="'status'" [options]="statusTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
                             <p-dropdown *ngSwitchCase="'priority'" [options]="priorityTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
                         </th>
