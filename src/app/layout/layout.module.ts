@@ -19,6 +19,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SliderModule } from 'primeng/slider';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
     imports: [
         CommonModule,
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         InputTextareaModule,
         SliderModule,
         ReactiveFormsModule,
+        CalendarModule,
         FormsModule,
         NgbDropdownModule.forRoot()
     ],

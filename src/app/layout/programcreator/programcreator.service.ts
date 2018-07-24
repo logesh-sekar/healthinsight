@@ -7,6 +7,7 @@ import { ProgramCreator } from './programcreator.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    'Access-Control-Allow-Origin':'*',
     'Content-Type':  'application/json'
   })
 };
@@ -30,7 +31,7 @@ export class ProgramcreatorService {
   programCreatorSubmit(model:ProgramCreator):Observable<ProgramCreator>{
         console.log("ProgramCreator");
 
-        return this.http.post<ProgramCreator>('http://httpbin.org/post',model,httpOptions)
+        return this.http.post<ProgramCreator>('http://10.6.122.180:8080/curis/qms/createProgram',model,httpOptions)
         . pipe(
             catchError(this.handleError('programCreatorSubmit',model))
           );

@@ -7,18 +7,20 @@
         <div class="form-group">
           <div class="row">
             <span class="col-lg-4">Program Name </span>
-            <span class="col-lg-4">Start Date </span>
-            <span class="col-lg-4">End Date </span>
+            <span class="col-lg-3">Start Date </span>
+            <span class="col-lg-3">End Date </span>
           </div>
           <div class="row">
             <span class="col-lg-4">
               <input type="text" class="form-control" formControlName="programName">
             </span>
-            <span class="col-lg-4">
-              <input type="text" class="form-control" formControlName="startDate">
+            <span class="col-lg-3">
+           <!--   <input type="text" class="form-control" formControlName="startDate"> -->
+              <p-calendar formControlName="startDate" [showIcon]="true" dateFormat="dd-mm-yy" ></p-calendar>
             </span>
-            <span class="col-lg-4">
-              <input type="text" class="form-control" formControlName="endDate">
+            <span class="col-lg-3">
+            <!-- <input type="text" class="form-control" formControlName="endDate"> -->
+              <p-calendar formControlName="endDate" [showIcon]="true" dateFormat="dd-mm-yy" ></p-calendar>
             </span>
           </div>
           <div class="row">
@@ -27,12 +29,12 @@
                 Program Name is required.
               </small>
             </span>
-            <span class="col-lg-4">
+            <span class="col-lg-3">
               <small *ngIf="!myForm.controls.startDate.valid" class="text-danger">
                 Start Date is required.
               </small>
             </span>
-            <span class="col-lg-4">
+            <span class="col-lg-3">
               <small *ngIf="!myForm.controls.endDate.valid" class="text-danger">
                 End Date is required.
               </small>
@@ -74,11 +76,11 @@
                         Max Score is required
                       </small>
                     </span>
-                    <span class="col-lg-2" *ngIf="myForm.controls.programCategorys.controls.length == i+1">
+                    <span class="col-lg-2 btn-background" *ngIf="myForm.controls.programCategorys.controls.length == i+1">
                     <button  class="btn btn-primary" (click)="addCategory()">+</button> 
                     </span>
 
-                    <span class="col-lg-2" *ngIf="myForm.controls.programCategorys.controls.length != i+1">
+                    <span class="col-lg-2 btn-background" *ngIf="myForm.controls.programCategorys.controls.length != i+1">
                        <button  class="btn btn-primary" (click)="removeCategory(i)">-</button> 
                     </span>
 
@@ -89,13 +91,13 @@
           </div>
         </div>
         <div class="margin-20">
-          <span class="col-lg-2" >
-            <button (click)="savePc(myForm.value,myForm.valid)" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+          <span class="col-lg-2 " >
+            <button (click)="savePc(myForm.value,myForm.valid)" class="btn btn-primary btn-background" [disabled]="!myForm.valid">Save</button>
           </span>
-          <span class="col-lg-2" >
-              <button (click)="submitPc(myForm.value,myForm.valid)" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+          <span class="col-lg-2 " >
+              <button (click)="submitPc(myForm.value,myForm.valid)" class="btn btn-primary " [disabled]="!myForm.valid">Submit</button>
             </span>
-            <span class="col-lg-2" >
+            <span class="col-lg-2 " >
                 <button (click)="cancelPc()" class="btn btn-primary" >Cancel</button>
               </span>
         </div>
