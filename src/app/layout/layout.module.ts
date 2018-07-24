@@ -17,6 +17,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
     imports: [
         CommonModule,
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         PageHeaderModule,
         InputTextareaModule,
         ReactiveFormsModule,
+        CalendarModule,
         FormsModule,
         NgbDropdownModule.forRoot()
     ],
