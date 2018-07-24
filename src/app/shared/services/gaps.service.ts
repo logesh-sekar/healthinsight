@@ -12,6 +12,9 @@ export class GapsService {
     getGaps() {
         return this.http.get('/assets/json/gaps.json');
     }
+    getMemberGaps() {
+        return this.http.get('/assets/json/membercaregaps.json');
+    }
     getGapsInfo(gapId) {
         return this.http.get('/assets/json/gaps.json').pipe(
             map(items => {

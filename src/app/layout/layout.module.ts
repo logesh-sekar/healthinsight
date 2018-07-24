@@ -7,6 +7,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MemberCareGapListComponent } from './member-care-gaplist/member-care-gaplist.component';
 import { MemberGapListComponent } from './member-gaplist/member-gaplist.component';
 import { MemberGapInfoComponent } from './member-gaplist/member-gap-info/member-gap-info.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,6 +16,7 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SliderModule } from 'primeng/slider';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
@@ -27,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         FileUploadModule,
         PageHeaderModule,
         InputTextareaModule,
+        SliderModule,
         ReactiveFormsModule,
         FormsModule,
         NgbDropdownModule.forRoot()
@@ -34,6 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     declarations: [LayoutComponent,
         SidebarComponent,
         HeaderComponent,
+        MemberCareGapListComponent,
         MemberGapListComponent,
         DashboardComponent,
         MemberGapInfoComponent,

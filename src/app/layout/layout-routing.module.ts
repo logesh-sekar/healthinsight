@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { MemberCareGapListComponent } from './member-care-gaplist/member-care-gaplist.component';
 import { MemberGapListComponent } from './member-gaplist/member-gaplist.component';
 import { MemberGapInfoComponent } from './member-gaplist/member-gap-info/member-gap-info.component';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'member-gap-list', component: MemberGapListComponent },
+            { path: 'member-care-gap-list', component: MemberCareGapListComponent },
             { path: 'member-gap/:gap_id', component: MemberGapInfoComponent },
             { path: 'programcreator', component: ProgramcreatorComponent}
         ]

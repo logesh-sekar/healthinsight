@@ -38,7 +38,7 @@
     </div>
     <div class="row">
         <div class="col col-lg-12">
-            <button type="button" pButton  label="Export" (click)="dt.exportCSV()" style="float:left"></button>
+            <button type="button" pButton icon="fa fa-download" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
             <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps" [columns]="cols" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="header" >
                     <tr>

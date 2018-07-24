@@ -1,8 +1,24 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
+        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-line-chart"></i>&nbsp;
+            <span>{{ 'Quality Metrics' | translate }}</span>
+        </a>
+        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-handshake-o"></i>&nbsp;
+            <span>{{ 'Gaps in Care' | translate }}</span>
+        </a>
+        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-line-chart"></i>&nbsp;
+            <span>{{ 'PHM' | translate }}</span>
+        </a>
         <a [routerLink]="['/member-gap-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <span>{{ 'Member Gaps List' | translate }}</span>
+        </a>
+        <a [routerLink]="['/member-care-gap-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;
+            <span>{{ 'Member Care Gaps List' | translate }}</span>
         </a>
       
         <div class="nested-menu">
