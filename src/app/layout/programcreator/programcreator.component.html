@@ -6,9 +6,9 @@
       <form [formGroup]="myForm" novalidate >
         <div class="form-group">
           <div class="row">
-            <span class="col-lg-4">Program Name </span>
-            <span class="col-lg-3">Start Date </span>
-            <span class="col-lg-3">End Date </span>
+            <span class="col-lg-4">Program Name* </span>
+            <span class="col-lg-3">Start Date* </span>
+            <span class="col-lg-3">End Date* </span>
           </div>
           <div class="row">
             <span class="col-lg-4">
@@ -48,13 +48,13 @@
                
                   <div class="row" *ngIf="i==0">
                     <span class="col-lg-4">
-                      <label>Category Name</label>
+                      <label>Category Name*</label>
                     </span>
                     <span class="col-lg-3">
-                      <label>Max Points</label>
+                      <label>Max Points*</label>
                     </span>
                     <span class="col-lg-3">
-                      <label>Max Score</label>
+                      <label>Max Score*</label>
                     </span>
                   </div>
                   <div class="row">
@@ -77,11 +77,11 @@
                       </small>
                     </span>
                     <span class="col-lg-2 btn-background" *ngIf="myForm.controls.programCategorys.controls.length == i+1">
-                    <button  class="btn btn-primary" (click)="addCategory()">+</button> 
+                    <button  class="btn btn-secondary" (click)="addCategory()">+</button> 
                     </span>
 
                     <span class="col-lg-2 btn-background" *ngIf="myForm.controls.programCategorys.controls.length != i+1">
-                       <button  class="btn btn-primary" (click)="removeCategory(i)">-</button> 
+                       <button  class="btn btn-secondary" (click)="removeCategory(i)">-</button> 
                     </span>
 
                   
@@ -92,13 +92,13 @@
         </div>
         <div class="margin-20">
           <span class="col-lg-2 " >
-            <button (click)="savePc(myForm.value,myForm.valid)" class="btn btn-primary btn-background" [disabled]="!myForm.valid">Save</button>
+            <button (click)="savePc(myForm.value,myForm.valid)" class="btn btn-secondary btn-background" [disabled]="!myForm.valid">Save</button>
           </span>
           <span class="col-lg-2 " >
-              <button (click)="submitPc(myForm.value,myForm.valid)" class="btn btn-primary " [disabled]="!myForm.valid">Submit</button>
+              <button (click)="submitPc(myForm.value,myForm.valid)" class="btn btn-secondary " [disabled]="!myForm.valid">Submit</button>
             </span>
             <span class="col-lg-2 " >
-                <button (click)="cancelPc()" class="btn btn-primary" >Cancel</button>
+                <button (click)="cancelPc()" class="btn btn-secondary" >Cancel</button>
               </span>
         </div>
       

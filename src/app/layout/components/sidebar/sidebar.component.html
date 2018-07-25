@@ -1,55 +1,183 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
-        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-line-chart"></i>&nbsp;
-            <span>{{ 'Quality Metrics' | translate }}</span>
-        </a>
-        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-handshake-o"></i>&nbsp;
-            <span>{{ 'Gaps in Care' | translate }}</span>
-        </a>
-        <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-line-chart"></i>&nbsp;
-            <span>{{ 'PHM' | translate }}</span>
-        </a>
-        <a [routerLink]="['/member-gap-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;
-            <span>{{ 'Member Gaps List' | translate }}</span>
-        </a>
-        <a [routerLink]="['/member-care-gap-list']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;
-            <span>{{ 'Member Care Gaps List' | translate }}</span>
-        </a>
-      
         <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClass('pages')">
-                <i class="fa fa-plus"></i>&nbsp;
-                <span>{{ 'Menu' | translate }}</span>
+            <a class="list-group-item" (click)="addExpandClass('qms')">
+                <i class="fa fa-line-chart"></i>&nbsp;
+                <span>{{ 'Quality Management' | translate }}</span>
+                <i class="fa  float-right" [ngClass]="{
+                    'fa-caret-right ':showMenu !== 'qms',
+                    'fa-caret-down ':showMenu === 'qms'
+                  }"></i>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'pages'">
+            <li class="nested" [class.expand]=" showMenu === 'qms' || showMenu === 'qps' || showMenu === 'config' ">
                 <ul class="submenu">
                     <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Submenu' | translate }}</span>
+                        <a href="http://healthinsight:8082/curis/hleft.jsp#!/" target="_blank">
+                            <span>{{ 'Quality Central' | translate }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span>{{ 'Submenu' | translate }}</span>
+                        <div class="nested-menu">
+                            <a class="list-group-item" (click)="addExpandClass('qps','qms')">
+                                <span>{{ 'Quality Program' | translate }}</span>
+                                <i class="fa  float-right" [ngClass]="{
+                                    'fa-caret-right ':showMenu !== 'qps',
+                                    'fa-caret-down ':showMenu === 'qps'
+                                    }"></i>
+                            </a>
+                            <li class="nested" [class.expand]="showMenu === 'qps'" >
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/MIPS.html"  target="_blank">
+                                            <span>{{ 'MIPS' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/Hedis.html"  target="_blank">
+                                            <span>{{ 'HEDIS' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <span>{{ 'OHA' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/CMS_Stars.html"  target="_blank">
+                                            <span>{{ 'CMS STAR' | translate }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="http://healthinsight:8082/curis/hleft.jsp#!/Measure_Library" target="_blank">
+                            <span>{{ 'Quality Measures' | translate }}</span>
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
-                            <i class="fa fa-monument"></i>&nbsp;
-                            <span><a [routerLink]="['/programcreator']" > Program Creator</a></span>
-                        </a>
+                        <div class="nested-menu">
+                            <a class="list-group-item" (click)="addExpandClass('config','qms')">
+                                <span>{{ 'Configuration' | translate }}</span>
+                                <i class="fa  float-right" [ngClass]="{
+                                    'fa-caret-right ':showMenu !== 'config',
+                                    'fa-caret-down ':showMenu === 'config'
+                                    }"></i>
+                            </a>
+                            <li class="nested" [class.expand]="showMenu === 'config'" >
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/hleft.jsp#!/Final_Creator" target="_blank">
+                                            <span>{{ 'Measure Creator' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a [routerLink]="['/programcreator']" [routerLinkActive]="['router-link-active']">
+                                            <span>{{ 'Program Creator' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/hleft.jsp#!/Measure_Configurator" target="_blank"> 
+                                            <span>{{ 'Configurator' | translate }}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://healthinsight:8082/curis/hleft.jsp#!/Measure_Worklist" target="_blank">
+                                            <span>{{ 'My Measures' | translate }}</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
                     </li>
                 </ul>
             </li>
         </div>
-    
+       
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('gaps')">
+                <i class="fa fa-handshake-o"></i>&nbsp;
+                <span>{{ 'Gaps in Care' | translate }}</span>
+                <i class="fa  float-right" [ngClass]="{
+                    'fa-caret-right ':showMenu !== 'gaps',
+                    'fa-caret-down ':showMenu === 'gaps'
+                  }"></i>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'gaps'">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Care Summary' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/member-care-gap-list']" [routerLinkActive]="['router-link-active']">
+                            <span>{{ 'Gaps List' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/member-gap-list']" [routerLinkActive]="['router-link-active']">
+                            <span>{{ 'Close Patient Gap' | translate }}<br><input size="10" placeholder="ID or Name" type="text" pInputText /></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>   
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClass('phm')">
+                <i class="fa fa-user-o"></i>&nbsp;
+                <span>{{ 'PHM' | translate }}</span>
+                <i class="fa  float-right" [ngClass]="{
+                    'fa-caret-right ':showMenu !== 'phm',
+                    'fa-caret-down ':showMenu === 'phm'
+                    }"></i>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'phm'">
+                <ul class="submenu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'PHM SUMMARY' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Risk Assessment' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Measure Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Membership Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Geo Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Utilitzation Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Financial Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>{{ 'Provider Analysis' | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </div>   
         <div class="header-fields">
             <div class="nested-menu">
                 <a class="list-group-item" (click)="addExpandClass('profile')">

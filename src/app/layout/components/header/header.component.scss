@@ -10,6 +10,9 @@ $topnav-background-color: #009688;
             &:hover {
                 color: #fff;
             }
+            .user-img{
+                background: url('assets/images/doc.png') no-repeat;
+            }
         }
     }
     .messages {

@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class SidebarComponent {
     isActive = false;
     collapsed = false;
-    showMenu = '';
+    showMenu = '0';
     pushRightClass = 'push-right';
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
@@ -35,9 +35,9 @@ export class SidebarComponent {
         this.isActive = !this.isActive;
     }
 
-    addExpandClass(element: any) {
+    addExpandClass(element: any, parentMenu = '0') {
         if (element === this.showMenu) {
-            this.showMenu = '0';
+            this.showMenu = parentMenu;
         } else {
             this.showMenu = element;
         }

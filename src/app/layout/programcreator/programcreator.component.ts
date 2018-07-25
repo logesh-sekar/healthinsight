@@ -13,9 +13,9 @@ export class ProgramcreatorComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  public submitted:boolean;
+  public submitted: boolean;
 
-  constructor(private _fb: FormBuilder,private programCreatorService:ProgramcreatorService,private router: Router) { }
+  constructor(private _fb: FormBuilder, private programCreatorService: ProgramcreatorService, private router: Router) { }
 
   ngOnInit() {
       this.myForm = this._fb.group({
@@ -31,9 +31,8 @@ export class ProgramcreatorComponent implements OnInit {
   initProgramCategorys() {
       return this._fb.group({
         categoryName: ['', Validators.required],
-        maxPoints:['', Validators.required],
-        maxScore:['', Validators.required]
-        
+        maxPoints: ['', Validators.required],
+        maxScore: ['', Validators.required]
       });
   }
 
@@ -47,28 +46,28 @@ export class ProgramcreatorComponent implements OnInit {
       control.removeAt(i);
   }
 
-  submitPc(model: ProgramCreator,isValid :boolean) {
+  submitPc(model: ProgramCreator, isValid: boolean) {
 
        this.submitted = true;
       // call API to save
       // ...
-      console.log("Model "+JSON.stringify(model));
-    this.programCreatorService.programCreatorSubmit(model).subscribe(model=> console.log("Succeessfully Created Program Creator"));
-    this.router.navigateByUrl("/dashboard");
+      console.log( 'Model' + JSON.stringify(model));
+    this.programCreatorService.programCreatorSubmit(model).subscribe( model => console.log('Succeessfully Created Program Creator'));
+    this.router.navigateByUrl('/dashboard');
   }
 
-  savePc(model: ProgramCreator,isValid :boolean) {
+  savePc(model: ProgramCreator, isValid: boolean) {
 
     this.submitted = true;
    // call API to save
    // ...
-   console.log("Model SavePC "+JSON.stringify(model));
- this.programCreatorService.programCreatorSubmit(model).subscribe(model=> console.log("Succeessfully Created Program Creator"))
+   console.log('Model SavePC ' + JSON.stringify(model));
+ this.programCreatorService.programCreatorSubmit(model).subscribe( model => console.log('Succeessfully Created Program Creator'));
 }
 
 
-cancelPc(){
-    this.router.navigateByUrl("/dashboard");
+cancelPc() {
+    this.router.navigateByUrl('/dashboard');
 }
 
 
