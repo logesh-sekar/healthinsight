@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ActivatedRoute } from '@angular/router';
 import { Gaps } from '../../shared/services/gaps.data';
 import { GapsService } from '../../shared/services/gaps.service';
 
@@ -11,7 +12,12 @@ import { GapsService } from '../../shared/services/gaps.service';
     providers: [GapsService]
 })
 export class MemberGapListComponent implements OnInit {
-    constructor(private gapsService: GapsService) {}
+    memberID: string;
+    constructor(private gapsService: GapsService, private route: ActivatedRoute) {
+        this.route.params.subscribe(params => {
+            this.memberID = params['memberId'];
+        });
+    }
     gaps: Gaps[];
     cols: any[];
     statusTypes =  [
@@ -27,15 +33,17 @@ export class MemberGapListComponent implements OnInit {
     ];
 
     ngOnInit() {
-        this.gapsService.getGaps().subscribe((data: Gaps[]) => {
-            this.gaps = data['data'];
+        this.gapsService.getGaps(this.memberID).subscribe((data: Gaps[]) => {
+            this.gaps = data;
         });
         this.cols = [
-            { field: 'care_gaps', header: 'Care Gaps' },
-            { field: 'interventions', header: 'Interventions' },
+            { field: 'measureTitle', header: 'Care Gaps' },
+            { field: 'intervention', header: 'Interventions' },
             { field: 'priority', header: 'Priority' },
-            { field: 'comments', header: 'Comments' },
-            { field: 'status', header: 'Status' }
+            { field: 'payerComments', header: 'Payer Comments' },
+            { field: 'providerComments', header: 'Provider Comments' },
+            { field: 'status', header: 'Status' },
+            { field: 'dateTime', header: 'Date & Time' },
         ];
     }
 }

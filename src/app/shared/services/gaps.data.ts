@@ -1,11 +1,20 @@
 
 export interface Gaps {
-    id;
-    care_gaps;
-    interventions;
+    qualityMeasureId;
+    measureTitle;
+    intervention;
     priority;
-    comments;
+    payerComments;
+    providerComments;
     status;
+    dateTime;
+}
+export interface CloseGaps {
+    memberId: number;
+    name: string;
+    gender: string;
+    dateOfBirth: string;
+    careGaps: Gaps[];
 }
 export interface MemberCareGaps {
     id;

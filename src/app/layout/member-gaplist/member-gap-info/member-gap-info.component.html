@@ -9,13 +9,13 @@
                             MID
                         </div>
                         <div class="col">
-                            PI72182
+                            {{closeGaps.memberId}}
                         </div>
                         <div class="col font-weight-bold">
                             Name
                         </div>
                         <div class="col">
-                            John Doe
+                            {{closeGaps.name}}
                         </div>
                     </div>
                     <div class="row card-text">
@@ -23,13 +23,13 @@
                             Gender
                         </div>
                         <div class="col">
-                            Male
+                            {{closeGaps.gender}}
                         </div>
                         <div class="col font-weight-bold">
                             DOB
                         </div>
                         <div class="col">
-                            15 Jan, 2018
+                            {{closeGaps.dateOfBirth}}
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <tbody >
                     <tr>
                         <td *ngFor="let col of cols" [ngSwitch]="col.field">
-                            <span *ngSwitchCase="'care_gaps'"> 
+                            <span *ngSwitchCase="'measureTitle'"> 
                                 {{gaps[col.field]}}
                             </span>
                             <p-dropdown *ngSwitchCase="'status'" [(ngModel)]="gaps[col.field]" [options]="statusTypes" [style]="{'width':'100%'}" ></p-dropdown>

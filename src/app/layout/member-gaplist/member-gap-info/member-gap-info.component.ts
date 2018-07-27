@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../../../router.animations';
-import { Gaps } from '../../../shared/services/gaps.data';
+import { Gaps, CloseGaps } from '../../../shared/services/gaps.data';
 import { GapsService } from '../../../shared/services/gaps.service';
 
 @Component({
@@ -12,29 +12,38 @@ import { GapsService } from '../../../shared/services/gaps.service';
     providers: [GapsService]
 })
 export class MemberGapInfoComponent implements OnInit {
+    closeGaps: CloseGaps;
     gaps: Gaps;
     cols: any[];
-    gapId: number;
+    gapId: string;
+    memberId: number;
     statusTypes =  [ { label: 'Open', value: 'Open' }, { label: 'Closed', value: 'Closed' }];
     priorityTypes =  [ { label: 'High', value: 'High' }, { label: 'Low', value: 'Low' }, { label: 'Medium', value: 'Medium' }];
 
     constructor(private gapsService: GapsService,
         private route: ActivatedRoute) {
             this.route.params.subscribe(params => {
-                this.gapId = params['gap_id'];
+                this.gapId = params['gapId'];
+                this.memberId = params['memberId'];
             });
         }
 
     ngOnInit() {
-        this.gapsService.getGapsInfo(this.gapId).subscribe((data: Gaps) => {
-            this.gaps = data;
+        this.gapsService.getGaps(this.memberId).subscribe((data: CloseGaps) => {
+            this.closeGaps = data;
+            const gapsArray = this.closeGaps.careGaps.filter(item => this.gapId  === item.qualityMeasureId );
+            if (gapsArray.length) {
+                this.gaps = gapsArray[0];
+            }
         });
         this.cols = [
-            { field: 'care_gaps', header: 'Care Gaps' },
-            { field: 'interventions', header: 'Interventions' },
+            { field: 'measureTitle', header: 'Care Gaps' },
+            { field: 'intervention', header: 'Interventions' },
             { field: 'priority', header: 'Priority' },
-            { field: 'comments', header: 'Comments' },
-            { field: 'status', header: 'Status' }
+            { field: 'payerComments', header: 'Payer Comments' },
+            { field: 'providerComments', header: 'Provider Comments' },
+            { field: 'status', header: 'Status' },
+            { field: 'dateTime', header: 'Date & Time' },
         ];
     }
 }

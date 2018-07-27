@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-
+import { navItems } from './_nav';
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
-    
-    collapedSideBar: boolean;
+export class LayoutComponent {
+    public navItems = navItems;
+  public sidebarMinimized = true;
+  private changes: MutationObserver;
+  public element: HTMLElement = document.body;
+  constructor() {
 
-    constructor() {}
+    this.changes = new MutationObserver((mutations) => {
+      this.sidebarMinimized = document.body.classList.contains('sidebar-minimized');
+    });
 
-    ngOnInit() {}
-
-    receiveCollapsed($event) {
-        this.collapedSideBar = $event;
-    }
+    this.changes.observe(<Element>this.element, {
+      attributes: true
+    });
+  }
 }

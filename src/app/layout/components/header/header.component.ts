@@ -1,55 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Replace } from '../../../shared/index';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    pushRightClass = 'push-right';
+    @Input() fixed: boolean;
 
-    constructor(private translate: TranslateService, public router: Router) {
+    @Input() navbarBrand: any;
+    @Input() navbarBrandFull: any;
+    @Input() navbarBrandMinimized: any;
 
-        this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
-        this.translate.setDefaultLang('en');
-        const browserLang = this.translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
+    @Input() sidebarToggler: any;
+    @Input() mobileSidebarToggler: any;
 
-        this.router.events.subscribe(val => {
-            if (
-                val instanceof NavigationEnd &&
-                window.innerWidth <= 992 &&
-                this.isToggled()
-            ) {
-                this.toggleSidebar();
-            }
-        });
+    @Input() asideMenuToggler: any;
+    @Input() mobileAsideMenuToggler: any;
+
+    constructor(private el: ElementRef) {}
+
+    ngOnInit() {
+        Replace(this.el);
+        this.isFixed(this.fixed);
     }
 
-    ngOnInit() {}
-
-    isToggled(): boolean {
-        const dom: Element = document.querySelector('body');
-        return dom.classList.contains(this.pushRightClass);
+    isFixed(fixed: boolean): void {
+        if (this.fixed) { document.querySelector('body').classList.add('header-fixed'); }
     }
 
-    toggleSidebar() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle(this.pushRightClass);
+    imgSrc(brand: any): void {
+        return brand.src ? brand.src : '';
     }
 
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
+    imgWidth(brand: any): void {
+        return brand.width ? brand.width : 'auto';
     }
 
-    onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+    imgHeight(brand: any): void {
+        return brand.height ? brand.height : 'auto';
     }
 
-    changeLang(language: string) {
-        this.translate.use(language);
+    imgAlt(brand: any): void {
+        return brand.alt ? brand.alt : '';
+    }
+
+    breakpoint(breakpoint: any): void {
+        console.log(breakpoint);
+        return breakpoint ? breakpoint : '';
     }
 }

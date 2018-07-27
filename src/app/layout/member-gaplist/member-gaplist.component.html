@@ -9,13 +9,13 @@
                             MID
                         </div>
                         <div class="col">
-                            PI72182
+                            {{gaps.memberId}}
                         </div>
                         <div class="col font-weight-bold">
                             Name
                         </div>
                         <div class="col">
-                            John Doe
+                            {{gaps.name}}
                         </div>
                     </div>
                     <div class="row card-text">
@@ -23,13 +23,13 @@
                             Gender
                         </div>
                         <div class="col">
-                            Male
+                            {{gaps.gender}}
                         </div>
                         <div class="col font-weight-bold">
                             DOB
                         </div>
                         <div class="col">
-                            15 Jan, 2018
+                                {{gaps.dateOfBirth}}
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col col-lg-12">
             <button type="button" pButton icon="fa fa-download" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
-            <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps" [columns]="cols" [paginator]="true" [rows]="5">
+            <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps.careGaps" [columns]="cols" [paginator]="true" [rows]="5">
                 <ng-template pTemplate="header" >
                     <tr>
                         <th *ngFor="let col of cols" [pSortableColumn]="col.field" >
@@ -58,7 +58,7 @@
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr>
                         <td *ngFor="let col of columns" [ngSwitch]="col.field">
-                            <a *ngSwitchCase="'care_gaps'" [routerLink]="['/member-gap/', rowData.id]">
+                            <a *ngSwitchCase="'measureTitle'" [routerLink]="['/member-gap/', rowData.qualityMeasureId, memberID]">
                                 {{rowData[col.field]}}
                             </a>
                             <span *ngSwitchDefault>

@@ -13,9 +13,9 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'member-gap-list', component: MemberGapListComponent },
+            { path: 'member-gap-list/:memberId', component: MemberGapListComponent },
             { path: 'member-care-gap-list', component: MemberCareGapListComponent },
-            { path: 'member-gap/:gap_id', component: MemberGapInfoComponent },
+            { path: 'member-gap/:gapId/:memberId', component: MemberGapInfoComponent },
             { path: 'programcreator', component: ProgramcreatorComponent}
         ]
     }

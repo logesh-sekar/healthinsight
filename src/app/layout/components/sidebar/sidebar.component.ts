@@ -1,73 +1,54 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, Input, HostBinding, OnInit } from '@angular/core';
+import { sidebarCssClasses } from '../../../shared';
 
 @Component({
-    selector: 'app-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss']
+  selector: 'app-sidebar',
+  template: `<ng-content></ng-content>`
 })
-export class SidebarComponent {
-    isActive = false;
-    collapsed = false;
-    showMenu = '0';
-    pushRightClass = 'push-right';
+export class SidebarComponent implements OnInit {
+  @Input() compact: boolean;
+  @Input() display: any;
+  @Input() fixed: boolean;
+  @Input() minimized: boolean;
+  @Input() offCanvas: boolean;
 
-    @Output() collapsedEvent = new EventEmitter<boolean>();
-    constructor(private translate: TranslateService, public router: Router) {
-        this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de']);
-        this.translate.setDefaultLang('en');
-        const browserLang = this.translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de/) ? browserLang : 'en');
+  @HostBinding('class.sidebar') true;
 
-        this.router.events.subscribe(val => {
-            if (
-                val instanceof NavigationEnd &&
-                window.innerWidth <= 992 &&
-                this.isToggled()
-            ) {
-                this.toggleSidebar();
-            }
-        });
+  constructor() {}
+
+  ngOnInit() {
+    this.displayBreakpoint(this.display);
+    this.isCompact(this.compact);
+    this.isFixed(this.fixed);
+    this.isMinimized(this.minimized);
+    this.isOffCanvas(this.offCanvas);
+  }
+
+  isCompact(compact: boolean): void {
+    if (this.compact) { document.querySelector('body').classList.add('sidebar-compact'); }
+  }
+
+  isFixed(fixed: boolean): void {
+    if (this.fixed) { document.querySelector('body').classList.add('sidebar-fixed'); }
+  }
+
+  isMinimized(minimized: boolean): void {
+    if (this.minimized) { document.querySelector('body').classList.add('sidebar-minimized'); }
+  }
+
+  isOffCanvas(offCanvas: boolean): void {
+    if (this.offCanvas) { document.querySelector('body').classList.add('sidebar-off-canvas'); }
+  }
+
+  fixedPosition(fixed: boolean): void {
+    if (this.fixed) { document.querySelector('body').classList.add('sidebar-fixed'); }
+  }
+
+  displayBreakpoint(display: any): void {
+    if (this.display !== false ) {
+      let cssClass;
+      this.display ? cssClass = `sidebar-${this.display}-show` : cssClass = sidebarCssClasses[0];
+      document.querySelector('body').classList.add(cssClass);
     }
-
-    eventCalled() {
-        this.isActive = !this.isActive;
-    }
-
-    addExpandClass(element: any, parentMenu = '0') {
-        if (element === this.showMenu) {
-            this.showMenu = parentMenu;
-        } else {
-            this.showMenu = element;
-        }
-    }
-
-    toggleCollapsed() {
-        this.collapsed = !this.collapsed;
-        this.collapsedEvent.emit(this.collapsed);
-    }
-
-    isToggled(): boolean {
-        const dom: Element = document.querySelector('body');
-        return dom.classList.contains(this.pushRightClass);
-    }
-
-    toggleSidebar() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle(this.pushRightClass);
-    }
-
-    rltAndLtr() {
-        const dom: any = document.querySelector('body');
-        dom.classList.toggle('rtl');
-    }
-
-    changeLang(language: string) {
-        this.translate.use(language);
-    }
-
-    onLoggedout() {
-        localStorage.removeItem('isLoggedin');
-    }
+  }
 }

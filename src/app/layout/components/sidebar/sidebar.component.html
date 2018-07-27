@@ -1,4 +1,124 @@
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+<!-- <div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item nav-dropdown" ngbDropdown>
+            <a class="nav-link nav-dropdown-toggle" ngbDropdownToggle>
+            <i class="nav-icon "></i> Base</a>
+            <ul class="nav-dropdown-items" ngbDropdownMenu>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/breadcrumb.html">
+                    <i class="nav-icon "></i> Breadcrumb</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="base/cards.html">
+                    <i class="nav-icon "></i> Cards</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+            <i class="nav-icon icon-cursor"></i> Buttons</a>
+            <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" href="buttons/buttons.html">
+                <i class="nav-icon icon-cursor"></i> Buttons</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="buttons/button-group.html">
+                <i class="nav-icon icon-cursor"></i> Buttons Group</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="buttons/dropdowns.html">
+                <i class="nav-icon icon-cursor"></i> Dropdowns</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="buttons/brand-buttons.html">
+                <i class="nav-icon icon-cursor"></i> Brand Buttons</a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+            <i class="nav-icon icon-pie-chart"></i> Charts</a>
+        </li>
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+            <i class="nav-icon icon-star"></i> Icons</a>
+            <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" href="icons/coreui-icons.html">
+                <i class="nav-icon icon-star"></i> CoreUI Icons
+                <span class="badge badge-success">NEW</span>
+                </a>
+                <a class="nav-link" href="icons/flags.html">
+                <i class="nav-icon icon-star"></i> Flags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="icons/font-awesome.html">
+                <i class="nav-icon icon-star"></i> Font Awesome
+                <span class="badge badge-secondary">4.7</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="icons/simple-line-icons.html">
+                <i class="nav-icon icon-star"></i> Simple Line Icons</a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+            <i class="nav-icon icon-bell"></i> Notifications</a>
+            <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" href="notifications/alerts.html">
+                <i class="nav-icon icon-bell"></i> Alerts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notifications/badge.html">
+                <i class="nav-icon icon-bell"></i> Badge</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="notifications/modals.html">
+                <i class="nav-icon icon-bell"></i> Modals</a>
+            </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="widgets.html">
+            <i class="nav-icon icon-calculator"></i> Widgets
+            <span class="badge badge-primary">NEW</span>
+            </a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-title">Extras</li>
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+            <i class="nav-icon icon-star"></i> Pages</a>
+            <ul class="nav-dropdown-items">
+            <li class="nav-item">
+                <a class="nav-link" href="login.html" target="_top">
+                <i class="nav-icon icon-star"></i> Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register.html" target="_top">
+                <i class="nav-icon icon-star"></i> Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="404.html" target="_top">
+                <i class="nav-icon icon-star"></i> Error 404</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="500.html" target="_top">
+                <i class="nav-icon icon-star"></i> Error 500</a>
+            </li>
+            </ul>
+        </li>
+
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>
+<!-- <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
     <div class="list-group">
         <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClass('qms')">
@@ -117,8 +237,10 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/member-gap-list']" [routerLinkActive]="['router-link-active']">
-                            <span>{{ 'Close Patient Gap' | translate }}<br><input size="10" placeholder="ID or Name" type="text" pInputText /></span>
+                        <a >
+                            <span>{{ 'Close Patient Gap' | translate }}<br>
+                                <p-autoComplete [minLength]="3" placeholder="ID or Name" size="7"  [suggestions]="memberList" (onSelect)="redirect($event)" (completeMethod)="search($event)" ></p-autoComplete>
+                                </span>
                         </a>
                     </li>
                 </ul>
@@ -199,4 +321,4 @@
         <i class="fa fa-fw fa-angle-double-left"></i>&nbsp;
         <span>{{ 'Collapse Sidebar' | translate }}</span>
     </div>
-</nav>
+</nav> -->
