@@ -22,7 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FrameUrlComponent } from './frame-url/frame-url.component';
 import { MeasureworklistComponent } from './measureworkilst/measure-worklist.component';
 import { MeasurelibraryComponent } from './measurelibrary/measure-library.component';
-import { MeasuredetailsComponent } from './measuredetails/measure-details.component';
+import { MemberListComponent } from './member-list/member-list.component';
 import { QualityCentralComponent } from './quality-central/quality-central.component';
 import { PageHeaderModule } from '../shared/modules/page-header/page-header.module';
 import { SidebarToggleDirective, AsideToggleDirective, SidebarMinimizeDirective,
@@ -80,7 +80,7 @@ import {CalendarModule} from 'primeng/calendar';
         FrameUrlComponent,
         MeasureworklistComponent,
         MeasurelibraryComponent,
-        MeasuredetailsComponent,
+        MemberListComponent,
         QualityCentralComponent,
         MemberGapInfoComponent,
         ProgramcreatorComponent],

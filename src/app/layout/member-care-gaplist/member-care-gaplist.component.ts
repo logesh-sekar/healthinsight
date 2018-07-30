@@ -25,31 +25,41 @@ export class MemberCareGapListComponent implements OnInit {
             this.loading = false;
             this.membergaps = [];
             data.forEach( item => {
-                const memgpItem: any = {};
-                memgpItem.name = item.name;
-                memgpItem.age = item.age;
-                memgpItem.gender = item.gender;
-                memgpItem.countOfCareGaps = item.countOfCareGaps;
-                memgpItem.riskGrade = item.riskGrade;
+                const memgpParentItem: any = {};
+                memgpParentItem.name = item.name;
+                memgpParentItem.member_id = item.member_id;
+                memgpParentItem.age = item.age;
+                memgpParentItem.gender = item.gender;
+                memgpParentItem.countOfCareGaps = item.countOfCareGaps;
+                memgpParentItem.riskGrade = item.riskGrade;
                 if (item.members.length > 0) {
-                    memgpItem.pcp = item.members[0].pcp;
-                    memgpItem.careGaps = item.members[0].careGaps;
-                    memgpItem.plan = item.members[0].plan;
-                    memgpItem.timePeriod = item.members[0].timePeriod;
+                    let memgpItem: any = {};
+                    item.members.forEach(element => {
+                        memgpItem = element;
+                        memgpItem.name = item.name;
+                        memgpItem.member_id = item.member_id;
+                        memgpItem.age = item.age;
+                        memgpItem.gender = item.gender;
+                        memgpItem.countOfCareGaps = item.countOfCareGaps;
+                        memgpItem.riskGrade = item.riskGrade;
+                        // console.log(memgpItem);
+                        this.membergaps.push(memgpItem);
+                    });
                 }
-                this.membergaps.push(memgpItem);
             });
         });
         this.cols = [
+            { field: 'member_id', header: 'Member Id' },
             { field: 'name', header: 'Name' },
             { field: 'age', header: 'Age' },
             { field: 'gender', header: 'Gender' },
             { field: 'pcp', header: 'PCP' },
-            { field: 'careGaps', header: 'Care Gaps' },
             { field: 'countOfCareGaps', header: 'Count of Care Gaps' },
+            { field: 'careGaps', header: 'Care Gaps' },
+            { field: 'status', header: 'Status' },
             { field: 'riskGrade', header: 'Risk Grade' },
             { field: 'plan', header: 'Plan' },
-            { field: 'timePeriod', header: 'Time Period' },
+            { field: 'timePeriod', header: 'Last Action Date' },
 
         ];
     }

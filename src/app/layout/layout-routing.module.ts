@@ -10,7 +10,7 @@ import { FrameUrlComponent } from './frame-url/frame-url.component';
 import { QualityCentralComponent } from './quality-central/quality-central.component';
 import { MeasureworklistComponent } from './measureworkilst/measure-worklist.component';
 import { MeasurelibraryComponent } from './measurelibrary/measure-library.component';
-import { MeasuredetailsComponent } from './measuredetails/measure-details.component';
+import { MemberListComponent } from './member-list/member-list.component';
 const routes: Routes = [
     {
         path: '',
@@ -20,6 +20,7 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'frame-url/:url', component: FrameUrlComponent },
             { path: 'member-gap-list', component: MemberGapListComponent },
+            { path: 'member-gap-list/:memberId', component: MemberGapListComponent },
             { path: 'member-care-gap-list', component: MemberCareGapListComponent },
             { path: 'member-gap/:gapId/:memberId', component: MemberGapInfoComponent },
             { path: 'programcreator', component: ProgramcreatorComponent},
@@ -27,7 +28,7 @@ const routes: Routes = [
             { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measurelibrary', component: MeasurelibraryComponent},
-            { path: 'measuredetails', component: MeasuredetailsComponent},
+            { path: 'member-list', component: MemberListComponent},
         ]
     }
 ];

@@ -1,5 +1,5 @@
 <div >
-    <app-page-header [heading]="'Member Care Gaps List'" [icon]="'fa-table'"></app-page-header>
+    <app-page-header [heading]="'Member Care Gaps Registry'" [icon]="'fa-table'"></app-page-header>
     <div class="card">
         <div class="card-body">
     <div class="row">
@@ -27,8 +27,15 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr>
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
+                        <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                            <span *ngSwitchCase="'member_id'">
+                                <a [routerLink]="['/member-gap-list/',rowData[col.field]]">{{rowData[col.field]}}</a>
+                            </span>
+                            <span *ngSwitchCase="'careGaps'">
+                                <a [routerLink]="['/member-gap/1/',rowData['member_id']]">{{rowData[col.field]}}</a>
+                            </span>
+                            <span *ngSwitchDefault>{{rowData[col.field]}}</span>
+                            
                         </td>
                     </tr>
                 </ng-template>

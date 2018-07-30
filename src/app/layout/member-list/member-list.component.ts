@@ -5,15 +5,16 @@ import { GapsService } from '../../shared/services/gaps.service';
 
 @Component({
     selector: 'app-tables',
-    templateUrl: './measure-details.component.html',
-    styleUrls: ['./measure-details.component.scss'],
+    templateUrl: './member-list.component.html',
+    styleUrls: ['./member-list.component.scss'],
     animations: [routerTransition()],
     providers: [GapsService]
 })
-export class MeasuredetailsComponent implements OnInit {
+export class MemberListComponent implements OnInit {
     constructor(private gapsService: GapsService) {}
     membergaps: MemberCareGaps[];
     cols: any[];
+    loading = true;
      genderTypes =  [
         { label: 'Select', value: '' },
         { label: 'Male', value: 'Male' },
@@ -21,14 +22,18 @@ export class MeasuredetailsComponent implements OnInit {
     ];
     ngOnInit() {
         this.gapsService.getMeasureDetails().subscribe((data: MemberCareGaps[]) => {
+            data.forEach(element => {
+                element.age = parseInt(element.age, 10);
+            });
             this.membergaps = data;
+            this.loading = false;
         });
         this.cols = [
             { field: 'id', header: 'Member Id' },
             { field: 'age', header: 'Age' },
             { field: 'gender', header: 'Gender' },
             { field: 'name', header: 'Name' },
-            { field: 'hccScore', header: 'MRI Score' },
+            { field: 'hccScore', header: 'MRA Score' },
             { field: 'amount', header: 'Amount' },
             { field: 'reason', header: 'Reason' },
         ];

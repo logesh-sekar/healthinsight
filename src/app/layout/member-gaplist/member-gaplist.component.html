@@ -11,31 +11,21 @@
                         </div>
                     </div>
                     <div *ngIf="gaps" class="form-group row">
-                        <div class="col font-weight-bold">
-                            MID
+                        <div class="col col-lg-2 col-xl-2 ">
+                            <span class="font-weight-bold">MID</span> : {{gaps.memberId}}
                         </div>
-                        <div class="col">
-                            {{gaps.memberId}}
-                        </div>
-                        <div class="col font-weight-bold">
-                            Name
-                        </div>
-                        <div class="col">
-                            {{gaps.name}}
+                        <div class="col col-lg-2 col-xl-2">
+                            <span class="font-weight-bold">Name</span> : {{gaps.name}}
                         </div>
                     </div>
                     <div  *ngIf="gaps" class="row card-text">
-                        <div class="col font-weight-bold">
-                            Gender
-                        </div>
-                        <div class="col">
+                        <div class="col col-lg-2 col-xl-2">
+                                <span class="font-weight-bold">Gender</span> : 
                             {{gaps.gender}}
                         </div>
-                        <div class="col font-weight-bold">
-                            DOB
-                        </div>
-                        <div class="col">
-                                {{gaps.dateOfBirth}}
+                        <div class="col col-lg-2 col-xl-2">
+                                <span class="font-weight-bold">DOB </span> :                         
+                                {{gaps.dateOfBirth | date}}
                         </div>
                     </div>
                     <div class="row" *ngIf="gaps">
@@ -63,6 +53,9 @@
                                             <a *ngSwitchCase="'measureTitle'" [routerLink]="['/member-gap/', rowData.qualityMeasureId, memberID]">
                                                 {{rowData[col.field]}}
                                             </a>
+                                            <span *ngSwitchCase="'dateTime'">
+                                                    {{rowData[col.field] | date}}
+                                            </span>
                                             <span *ngSwitchDefault>
                                                     {{rowData[col.field]}}
                                             </span>

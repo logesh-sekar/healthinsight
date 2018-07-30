@@ -85,7 +85,7 @@ export const navItems = [
         icon: 'fa fa-handshake-o'
       },
       {
-        name: 'Gaps List',
+        name: 'Gaps Registry',
         url: '/member-care-gap-list',
         icon: 'fa fa-handshake-o'
       },

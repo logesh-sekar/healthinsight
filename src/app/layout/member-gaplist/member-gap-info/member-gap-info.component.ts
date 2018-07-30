@@ -31,7 +31,7 @@ export class MemberGapInfoComponent implements OnInit {
     ngOnInit() {
         this.gapsService.getGaps(this.memberId).subscribe((data: CloseGaps) => {
             this.closeGaps = data;
-            const gapsArray = this.closeGaps.careGaps.filter(item => this.gapId  === item.qualityMeasureId );
+            const gapsArray = this.closeGaps.careGaps;
             if (gapsArray.length) {
                 this.gaps = gapsArray[0];
             }

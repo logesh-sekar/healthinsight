@@ -14,9 +14,11 @@ import { GapsService } from '../../shared/services/gaps.service';
 export class MemberGapListComponent implements OnInit {
     memberID: string;
     constructor(private gapsService: GapsService, private route: ActivatedRoute) {
-        // this.route.params.subscribe(params => {
-        //     this.memberID = params['memberId'];
-        // });
+        this.route.params.subscribe(params => {
+            if (params['memberId']) {
+                this.memberID = params['memberId'];
+            }
+        });
     }
     gaps: any = [];
     cols: any[];
@@ -34,9 +36,11 @@ export class MemberGapListComponent implements OnInit {
     ];
 
     ngOnInit() {
-        this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
-            this.gaps = data;
-        });
+        if (this.memberID) {
+            this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
+                this.gaps = data;
+            });
+        }
         this.cols = [
             { field: 'measureTitle', header: 'Care Gaps' },
             { field: 'intervention', header: 'Interventions' },
