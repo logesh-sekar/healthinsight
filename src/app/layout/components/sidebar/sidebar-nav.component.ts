@@ -96,7 +96,8 @@ export class SidebarNavItemComponent implements OnInit {
   }
 
   public isActive() {
-    return this.router.isActive(this.thisUrl(), false);
+    return false;
+    // return this.router.isActive(this.thisUrl(), false);
   }
 
   constructor( private router: Router, private el: ElementRef ) { }
@@ -120,7 +121,7 @@ export class SidebarNavItemComponent implements OnInit {
       <span *ngIf="isBadge()" [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
     </a>
     <ng-template #external>
-      <a [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'" href="{{link.url}}">
+      <a [ngClass]="hasVariant() ? 'nav-link nav-link-' + link.variant : 'nav-link'" [routerLink]="['/frame-url/', link.url]">
         <i *ngIf="isIcon()" class="nav-icon {{ link.icon }}"></i>
         {{ link.name }}
         <span *ngIf="isBadge()" [ngClass]="'badge badge-' + link.badge.variant">{{ link.badge.text }}</span>
@@ -140,7 +141,7 @@ export class SidebarNavLinkComponent implements OnInit {
   }
 
   public isExternalLink() {
-    return this.link.url.substring(0, 4) === 'http' ? true : false;
+    return (this.link.url === '#' || this.link.url.substring(0, 4) === 'http') ? true : false;
   }
 
   public isIcon() {
@@ -153,7 +154,8 @@ export class SidebarNavLinkComponent implements OnInit {
     }
   }
 
-  constructor( private router: Router, private el: ElementRef ) { }
+  constructor( private router: Router, private el: ElementRef ) {
+   }
 
   ngOnInit() {
     Replace(this.el);

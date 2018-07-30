@@ -6,7 +6,8 @@ import { navItems } from './_nav';
     styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-    public navItems = navItems;
+  public navItems = navItems;
+  public micEnabled = true;
   public sidebarMinimized = true;
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
@@ -19,5 +20,8 @@ export class LayoutComponent {
     this.changes.observe(<Element>this.element, {
       attributes: true
     });
+  }
+  toggleMic() {
+    this.micEnabled = !this.micEnabled;
   }
 }

@@ -15,7 +15,9 @@ export class ProgramcreatorComponent implements OnInit {
 
   public submitted: boolean;
 
-  constructor(private _fb: FormBuilder, private programCreatorService: ProgramcreatorService, private router: Router) { }
+  constructor(private _fb: FormBuilder,
+    private programCreatorService: ProgramcreatorService,
+    private router: Router) { }
 
   ngOnInit() {
       this.myForm = this._fb.group({
@@ -46,23 +48,23 @@ export class ProgramcreatorComponent implements OnInit {
       control.removeAt(i);
   }
 
-  submitPc(model: ProgramCreator, isValid: boolean) {
+  submitPc(modelPc: ProgramCreator, isValid: boolean) {
 
        this.submitted = true;
       // call API to save
       // ...
-      console.log( 'Model' + JSON.stringify(model));
-    this.programCreatorService.programCreatorSubmit(model).subscribe( model => console.log('Succeessfully Created Program Creator'));
+      console.log( 'Model' + JSON.stringify(modelPc));
+    this.programCreatorService.programCreatorSubmit(modelPc).subscribe( model => console.log('Succeessfully Created Program Creator'));
     this.router.navigateByUrl('/dashboard');
   }
 
-  savePc(model: ProgramCreator, isValid: boolean) {
+  savePc(modelPC: ProgramCreator, isValid: boolean) {
 
     this.submitted = true;
    // call API to save
    // ...
-   console.log('Model SavePC ' + JSON.stringify(model));
- this.programCreatorService.programCreatorSubmit(model).subscribe( model => console.log('Succeessfully Created Program Creator'));
+   console.log('Model SavePC ' + JSON.stringify(modelPC));
+ this.programCreatorService.programCreatorSubmit(modelPC).subscribe( model => console.log('Succeessfully Created Program Creator'));
 }
 
 

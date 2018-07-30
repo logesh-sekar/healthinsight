@@ -14,12 +14,13 @@ import { GapsService } from '../../shared/services/gaps.service';
 export class MemberGapListComponent implements OnInit {
     memberID: string;
     constructor(private gapsService: GapsService, private route: ActivatedRoute) {
-        this.route.params.subscribe(params => {
-            this.memberID = params['memberId'];
-        });
+        // this.route.params.subscribe(params => {
+        //     this.memberID = params['memberId'];
+        // });
     }
-    gaps: Gaps[];
+    gaps: any = [];
     cols: any[];
+    memberList: any;
     statusTypes =  [
         { label: 'Select', value: '' },
         { label: 'Open', value: 'Open' },
@@ -33,7 +34,7 @@ export class MemberGapListComponent implements OnInit {
     ];
 
     ngOnInit() {
-        this.gapsService.getGaps(this.memberID).subscribe((data: Gaps[]) => {
+        this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
             this.gaps = data;
         });
         this.cols = [
@@ -45,5 +46,32 @@ export class MemberGapListComponent implements OnInit {
             { field: 'status', header: 'Status' },
             { field: 'dateTime', header: 'Date & Time' },
         ];
+    }
+    search(event) {
+        this.gapsService.getMemberList(event.query).subscribe((data: any) => {
+            this.memberList = [];
+            data.forEach(element => {
+                this.memberList.push(`${element.firstName} ${element.lastName} [${element.memberId}]`);
+            });
+        });
+    }
+    loadMemberInfo(memberString) {
+        const pattern = /\[(.*?)\]/g;
+        const match = pattern.exec(memberString);
+        console.log(match, '-', memberString);
+        if (match.length) {
+            this.memberID = match[1];
+            this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
+                this.gaps = data;
+                // data.forEach(element => {
+                //     // const memberInfo: any = {};
+                //     // memberInfo.name =  element.name;
+                //     // memberInfo.memberId =  element.memberId;
+                //     // memberInfo.gender =  element.gender;
+                //     // memberInfo.dateOfBirth =  element.dateOfBirth;
+                //     this.gaps.push(element);
+                // });
+            });
+        }
     }
 }

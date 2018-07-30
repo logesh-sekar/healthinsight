@@ -6,6 +6,11 @@ import { MemberGapListComponent } from './member-gaplist/member-gaplist.componen
 import { MemberGapInfoComponent } from './member-gaplist/member-gap-info/member-gap-info.component';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FrameUrlComponent } from './frame-url/frame-url.component';
+import { QualityCentralComponent } from './quality-central/quality-central.component';
+import { MeasureworklistComponent } from './measureworkilst/measure-worklist.component';
+import { MeasurelibraryComponent } from './measurelibrary/measure-library.component';
+import { MeasuredetailsComponent } from './measuredetails/measure-details.component';
 const routes: Routes = [
     {
         path: '',
@@ -13,10 +18,15 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'member-gap-list/:memberId', component: MemberGapListComponent },
+            { path: 'frame-url/:url', component: FrameUrlComponent },
+            { path: 'member-gap-list', component: MemberGapListComponent },
             { path: 'member-care-gap-list', component: MemberCareGapListComponent },
             { path: 'member-gap/:gapId/:memberId', component: MemberGapInfoComponent },
-            { path: 'programcreator', component: ProgramcreatorComponent}
+            { path: 'programcreator', component: ProgramcreatorComponent},
+            { path: 'quality-central', component: QualityCentralComponent },
+            { path: 'measureworklist', component: MeasureworklistComponent},
+            { path: 'measurelibrary', component: MeasurelibraryComponent},
+            { path: 'measuredetails', component: MeasuredetailsComponent},
         ]
     }
 ];

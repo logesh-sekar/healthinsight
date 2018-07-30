@@ -7,7 +7,7 @@ import { ProgramCreator } from './programcreator.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Origin': '*',
     'Content-Type':  'application/json'
   })
 };
@@ -23,19 +23,15 @@ export class ProgramcreatorService {
 
   constructor(private http: HttpClient,
     httpErrorHandler: HttpErrorHandler) {
-      this.handleError =  httpErrorHandler.createHandleError('ProgramcreatorService'); 
+      this.handleError =  httpErrorHandler.createHandleError('ProgramcreatorService');
      }
+  programCreatorSubmit(model: ProgramCreator): Observable<ProgramCreator> {
+        console.log('ProgramCreator');
 
-
- 
-  programCreatorSubmit(model:ProgramCreator):Observable<ProgramCreator>{
-        console.log("ProgramCreator");
-
-        return this.http.post<ProgramCreator>('http://10.6.122.180:8080/curis/qms/createProgram',model,httpOptions)
+        return this.http.post<ProgramCreator>('http://healthinsight:8082/curis/qms/createProgram', model, httpOptions)
         . pipe(
-            catchError(this.handleError('programCreatorSubmit',model))
+            catchError(this.handleError('programCreatorSubmit', model))
           );
-  
        // this.http.post('http://<hostname>:<port>/curis/qms/createProgram',model);
   }
 

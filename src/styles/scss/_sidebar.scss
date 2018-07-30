@@ -93,7 +93,7 @@
 
   .nav-link {
     display: block;
-    padding: $sidebar-nav-link-padding-y $sidebar-nav-link-padding-x;
+    padding: $sidebar-nav-link-padding-y ($sidebar-nav-link-padding-x * .75);
     color: $sidebar-nav-link-color;
     text-decoration: none;
     background: $sidebar-nav-link-bg;

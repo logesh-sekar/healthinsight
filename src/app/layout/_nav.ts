@@ -6,7 +6,7 @@ export const navItems = [
     children: [
       {
         name: 'Quality Central',
-        url: 'http://healthinsight:8082/curis/hleft.jsp#!/',
+        url: '/quality-central',
         icon: 'fa fa-line-chart'
       },
       {
@@ -21,7 +21,7 @@ export const navItems = [
           },
           {
             name: 'HEDIS',
-            url: 'http://healthinsight:8082/curis/Hedis.html',
+            url: 'http://192.168.184.70/views/CurisDashboard_HEDIS_1/HEDIS_Plan?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
             icon: 'fa fa-line-chart'
           },
           {
@@ -31,14 +31,14 @@ export const navItems = [
           },
           {
             name: 'CMS STAR',
-            url: 'http://healthinsight:8082/curis/CMS_Stars.html',
+            url: 'https://public.tableau.com/views/CMS_webscree_12dec/NEW_CMSSTAR?:embed=y&:showVizHome=n&:tabs=n&:toolbar=n&:apiID=host0#navType=0&navSrc=Parse',
             icon: 'fa fa-line-chart'
           },
         ]
       },
       {
         name: 'Quality Measures',
-        url: 'http://healthinsight:8082/curis/hleft.jsp#!/Measure_Library',
+        url: '/measurelibrary',
         icon: 'fa fa-line-chart'
       },
       {
@@ -63,7 +63,7 @@ export const navItems = [
           },
           {
             name: 'My Measures',
-            url: 'http://healthinsight:8082/curis/hleft.jsp#!/Measure_Worklist',
+            url: '/measureworklist',
             icon: 'fa fa-sliders'
           },
         ]
@@ -81,7 +81,7 @@ export const navItems = [
     children: [
       {
         name: 'Care Summary',
-        url: '#',
+        url: 'http://192.168.184.70/views/Gaps_in_Care_Dashboard/CareGapSummaryDashboard?:iid=1&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-handshake-o'
       },
       {
@@ -91,7 +91,7 @@ export const navItems = [
       },
       {
         name: 'Close Patient Gap',
-        url: '#',
+        url: '/member-gap-list',
         icon: 'fa fa-handshake-o'
       },
     ]
@@ -103,17 +103,17 @@ export const navItems = [
     children: [
       {
         name: 'PHM SUMMARY',
-        url: '#',
+        url: 'http://192.168.184.70/views/PHM_Summary_Dashboard/Dashboard4?:iid=5&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
         name: 'Risk Assessment',
-        url: '#',
+        url: 'http://192.168.184.70/views/PHMRiskDashboard/PHMRisk_Dashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
         name: 'Measure Analysis',
-        url: '#',
+        url: 'http://192.168.184.70/views/PHMMeasuressDashboard/Template_2?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
@@ -123,7 +123,7 @@ export const navItems = [
       },
       {
         name: 'Geo Analysis',
-        url: '#',
+        url: 'http://192.168.184.70/views/Location_Dashboard/PHM_Location_Dashboard?:iid=4&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {

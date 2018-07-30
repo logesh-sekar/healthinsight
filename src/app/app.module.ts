@@ -7,7 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent, SafePipe } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramcreatorComponent } from './layout/programcreator/programcreator.component';
@@ -27,7 +27,6 @@ export const createTranslateLoader = (http: HttpClient) => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-     
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -37,13 +36,13 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         AppRoutingModule
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, SafePipe],
     exports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule
       ],
-    providers: [AuthGuard,HttpErrorHandler,MessageService],
+    providers: [AuthGuard, HttpErrorHandler, MessageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

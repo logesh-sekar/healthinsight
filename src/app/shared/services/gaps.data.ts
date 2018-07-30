@@ -1,5 +1,6 @@
 
 export interface Gaps {
+    memberId;
     qualityMeasureId;
     measureTitle;
     intervention;
@@ -16,17 +17,17 @@ export interface CloseGaps {
     dateOfBirth: string;
     careGaps: Gaps[];
 }
+
 export interface MemberCareGaps {
-    id;
-    care_gaps;
     age;
     gender;
-    pcp;
-    care_gaps_count;
+    countOfCareGaps;
     name;
-    risk_grade;
-    plan;
-    time_period;
+    riskGrade;
+    timePeriod: string;
+    plan: string;
+    pcp: string;
+    careGaps: string;
 }
 
 export enum priorityTypes {
