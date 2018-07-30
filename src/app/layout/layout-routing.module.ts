@@ -25,6 +25,7 @@ const routes: Routes = [
             { path: 'programcreator', component: ProgramcreatorComponent},
             { path: 'quality-central', component: QualityCentralComponent },
             { path: 'measureworklist', component: MeasureworklistComponent},
+            { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measurelibrary', component: MeasurelibraryComponent},
             { path: 'measuredetails', component: MeasuredetailsComponent},
         ]

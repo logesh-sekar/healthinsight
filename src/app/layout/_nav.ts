@@ -29,11 +29,11 @@ export const navItems = [
             url: '#',
             icon: 'fa fa-line-chart'
           },
-          {
-            name: 'CMS STAR',
-            url: 'https://public.tableau.com/views/CMS_webscree_12dec/NEW_CMSSTAR?:embed=y&:showVizHome=n&:tabs=n&:toolbar=n&:apiID=host0#navType=0&navSrc=Parse',
-            icon: 'fa fa-line-chart'
-          },
+          // {
+          //   name: 'CMS STAR',
+          //   url: 'https://public.tableau.com/views/CMS_webscree_12dec/NEW_CMSSTAR?:embed=y&:showVizHome=n&:tabs=n&:toolbar=n&:apiID=host0#navType=0&navSrc=Parse',
+          //   icon: 'fa fa-line-chart'
+          // },
         ]
       },
       {

@@ -14,22 +14,17 @@ export class MeasurelibraryComponent implements OnInit {
     constructor(private gapsService: GapsService) {}
     membergaps: MemberCareGaps[];
     cols: any[];
-   
     ngOnInit() {
         this.gapsService.getLibrary().subscribe((data: MemberCareGaps[]) => {
             this.membergaps = data;
         });
         this.cols = [
             { field: 'id', header: 'Measure ID' },
-          
             { field: 'name', header: 'Measure Name' },
             { field: 'programName', header: 'Program Name' },
-            
             { field: 'type', header: 'Measure Type' },
             { field: 'steward', header: 'Measure Steward' },
             { field: 'clinocalCondition', header: 'Clinical Condition' },
-           
-
         ];
     }
 }

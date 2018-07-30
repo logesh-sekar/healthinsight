@@ -1,5 +1,6 @@
-<div [@routerTransition]>
+<div >
     <app-page-header [heading]="'Member Details'" [icon]="'fa-table'"></app-page-header>
+    <div class="card">
     <div class="row">
         <div class="col col-lg-12">
             <button type="button" pButton icon="fa fa-download" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
@@ -32,5 +33,6 @@
                 </ng-template>
             </p-table>
         </div>
+    </div>
     </div>
 </div>

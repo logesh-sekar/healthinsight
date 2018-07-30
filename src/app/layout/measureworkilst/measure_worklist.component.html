@@ -11,6 +11,7 @@
                             {{col.header}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
+                        <th rowspan="2" width="10%"></th>
                     </tr>
                    <tr>
                         <th *ngFor="let col of cols" [ngSwitch]="col.field">
@@ -28,6 +29,11 @@
                     <tr>
                         <td *ngFor="let col of columns">
                             {{rowData[col.field]}}
+                        </td>
+                        <td>
+                            <i class="fa fa-2x fa-check-square"></i>&nbsp;
+                            <i class="fa fa-2x fa-window-close"></i>&nbsp;
+                            <i class="fa fa-2x fa-cogs"></i>
                         </td>
                     </tr>
                 </ng-template>

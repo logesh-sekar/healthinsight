@@ -11,6 +11,7 @@
                             {{col.header}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
+                        <th rowspan="2" width="3%"></th>
                     </tr>
                     <tr>
                         <th *ngFor="let col of cols" [ngSwitch]="col.field">
@@ -22,12 +23,16 @@
                             <input *ngSwitchDefault pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
                             <p-dropdown *ngSwitchCase="'gender'" [options]="genderTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
                         </th>
+                        
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr>
                         <td *ngFor="let col of columns">
                             {{rowData[col.field]}}
+                        </td>
+                        <td>
+                            <i class="fa fa-copy"></i>
                         </td>
                     </tr>
                 </ng-template>
