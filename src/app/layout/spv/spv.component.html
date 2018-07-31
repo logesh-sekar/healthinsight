@@ -34,7 +34,7 @@
             </div>
             <div class="col-lg-3 MRA">
               <br><br><br>
-              <p class="rounded bg-secondary">MRA Score: <span class="rounded-circle bg-success p-2">{{patientProfileForm.mraScore}}</span><br>
+              <p class="rounded bg-secondary">MRA Score: <span class="bg-primary rounded p-1">&nbsp;{{patientProfileForm.mraScore}}</span><br>
 			        Risk: <span [innerHtml]="patientProfileForm.risk"></span></p>
             </div>
             <div class="col-lg-3" style="cursor: pointer;">
@@ -51,16 +51,16 @@
                 <tr>
                   <td>
                   <div class="div1 Comorbi">
-                    <span class="headings">Comorbidities</span>
-                    <span class="rounded-circle bg-success p-2 " >{{patientProfileForm.comorbiditiesCount}}
+                    <span class="headings">Comorbidities</span>&nbsp;
+                    <span class="bg-primary rounded p-1 " >{{patientProfileForm.comorbiditiesCount}}
                     </span>
                     <div *ngFor="let member of patientProfileForm.comorbidities" >{{member}}</div>
                   </div>
                   </td>
                   <td>
                   <div class="div1">
-                    <span class="headings">Care Gaps</span>
-                    <span class="bg-success rounded-circle p-2">{{patientProfileForm.careGapsCount}}</span>
+                    <span class="headings">Care Gaps</span>&nbsp;
+                    <span class="bg-primary rounded p-1">&nbsp;{{patientProfileForm.careGapsCount}}</span>
                   </div>
                   <div class="div1 careGaps">
                     <div *ngFor="let member of patientProfileForm.careGaps">{{member}}</div>
