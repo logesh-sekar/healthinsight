@@ -45,10 +45,11 @@ export class MemberGapListComponent implements OnInit {
             { field: 'measureTitle', header: 'Care Gaps' },
             { field: 'intervention', header: 'Interventions' },
             { field: 'priority', header: 'Priority' },
-            { field: 'payerComments', header: 'Payer Comments' },
-            { field: 'providerComments', header: 'Provider Comments' },
+            // { field: 'payerComments', header: 'Payer Comments' },
+            // { field: 'providerComments', header: 'Provider Comments' },
             { field: 'status', header: 'Status' },
-            { field: 'dateTime', header: 'Date & Time' },
+            { field: 'dateTime', header: 'Last Action Date' },
+            // { field: 'duration', header: 'Duration' },
         ];
     }
     search(event) {

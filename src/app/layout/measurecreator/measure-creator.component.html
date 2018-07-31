@@ -1,0 +1,151 @@
+<div class="container">
+  <h4>Measure Creator</h4>
+  <div class="row">
+    <div class="col-lg-12">
+
+      <form [formGroup]="myForm" novalidate >
+        <div class="form-group">
+          <div class="row">
+            <span class="col-lg-4">Program Name* </span>
+            <span class="col-lg-4">Denominator* </span>
+            
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="programName">
+            </span>
+            <span class="col-lg-4">
+               <textarea class="form-control" rows="3" type="text" formControlName="Denominator"></textarea>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.programName.valid" class="text-danger">
+                Program Name is required.
+              </small>
+            </span>
+             <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.Denominator.valid" class="text-danger">
+                Denominator is required.
+              </small>
+            </span>
+           
+          </div>
+
+          <div class="row">
+            <span class="col-lg-4">Measure Title* </span>
+            <span class="col-lg-4">Denominator Exclusions </span>
+           
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="MeasureTitle">
+            </span>
+            <span class="col-lg-4">
+               <textarea class="form-control" rows="3" type="text" formControlName="DenominatorExclusion"></textarea>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.programName.valid" class="text-danger">
+                Measure title is required.
+              </small>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">Description* </span>
+            <span class="col-lg-4">Numerator* </span>
+           
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="Description">
+            </span>
+            <span class="col-lg-4">
+               <textarea class="form-control" rows="3" type="text" formControlName="Numerator"></textarea>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.Description.valid" class="text-danger">
+                Description is required.
+              </small>
+            </span>
+             <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.Numerator.valid" class="text-danger">
+                Numerator is required.
+              </small>
+            </span>
+           
+          </div>
+
+          <div class="row">
+            <span class="col-lg-4">Target Age* </span>
+            <span class="col-lg-4">Numerator Exclusions </span>
+           
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="TargetAge">
+            </span>
+            <span class="col-lg-4">
+               <textarea class="form-control" rows="3" type="text" formControlName="NumeratorExclusions"></textarea>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <small *ngIf="!myForm.controls.TargetAge.valid" class="text-danger">
+                Target Age is required.
+              </small>
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">Measure Domain </span>
+            <span class="col-lg-4">Target </span>
+           
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="MeasureDomain">
+            </span>
+            <span class="col-lg-4">
+               <input type="text" class="form-control" formControlName="Target">
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">Measure Category </span> 
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="MeasureCategory">
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">Type</span> 
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="Type">
+            </span>
+          </div>
+          <div class="row">
+            <span class="col-lg-4">Clinical Conditions </span> 
+          </div>
+          <div class="row">
+            <span class="col-lg-4">
+              <input type="text" class="form-control" formControlName="ClinicalConditions">
+            </span>
+          </div>
+          <div class="margin-20">
+            <span class="col-lg-2 " >
+            <button (click)="savePc(myForm.value,myForm.valid)" class="btn btn-secondary btn-background" [disabled]="!myForm.valid">Save</button>
+            </span>
+            <span class="col-lg-2 " >
+              <button (click)="submitPc(myForm.value,myForm.valid)" class="btn btn-secondary " [disabled]="!myForm.valid">Submit</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

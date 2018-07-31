@@ -23,6 +23,8 @@ import { FrameUrlComponent } from './frame-url/frame-url.component';
 import { MeasureworklistComponent } from './measureworkilst/measure-worklist.component';
 import { MeasurelibraryComponent } from './measurelibrary/measure-library.component';
 import { MemberListComponent } from './member-list/member-list.component';
+import { MeasurecreatorComponent } from './measurecreator/measure-creator.component';
+import { SpvComponent } from './spv/spv.component';
 import { QualityCentralComponent } from './quality-central/quality-central.component';
 import { PageHeaderModule } from '../shared/modules/page-header/page-header.module';
 import { SidebarToggleDirective, AsideToggleDirective, SidebarMinimizeDirective,
@@ -35,7 +37,7 @@ import { SliderModule } from 'primeng/slider';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {CalendarModule} from 'primeng/calendar';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
     imports: [
         CommonModule,
@@ -81,8 +83,10 @@ import {CalendarModule} from 'primeng/calendar';
         MeasureworklistComponent,
         MeasurelibraryComponent,
         MemberListComponent,
+        SpvComponent,
         QualityCentralComponent,
         MemberGapInfoComponent,
+        MeasurecreatorComponent,
         ProgramcreatorComponent],
 
 })

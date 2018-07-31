@@ -11,6 +11,8 @@ import { QualityCentralComponent } from './quality-central/quality-central.compo
 import { MeasureworklistComponent } from './measureworkilst/measure-worklist.component';
 import { MeasurelibraryComponent } from './measurelibrary/measure-library.component';
 import { MemberListComponent } from './member-list/member-list.component';
+import { MeasurecreatorComponent } from './measurecreator/measure-creator.component';
+import { SpvComponent } from './spv/spv.component';
 const routes: Routes = [
     {
         path: '',
@@ -29,6 +31,9 @@ const routes: Routes = [
             { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measurelibrary', component: MeasurelibraryComponent},
             { path: 'member-list', component: MemberListComponent},
+            { path: 'measurecreator', component: MeasurecreatorComponent},
+            { path: 'measurecreator/:measureId', component: MeasurecreatorComponent},
+            { path: 'spv/:memberId', component: SpvComponent},
         ]
     }
 ];

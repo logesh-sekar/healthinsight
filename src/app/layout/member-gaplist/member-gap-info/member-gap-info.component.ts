@@ -13,7 +13,7 @@ import { GapsService } from '../../../shared/services/gaps.service';
 })
 export class MemberGapInfoComponent implements OnInit {
     closeGaps: CloseGaps;
-    gaps: Gaps;
+    gaps: any;
     cols: any[];
     gapId: string;
     memberId: number;
@@ -33,7 +33,7 @@ export class MemberGapInfoComponent implements OnInit {
             this.closeGaps = data;
             const gapsArray = this.closeGaps.careGaps;
             if (gapsArray.length) {
-                this.gaps = gapsArray[0];
+                this.gaps = gapsArray;
             }
         });
         this.cols = [

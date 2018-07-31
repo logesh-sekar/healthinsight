@@ -16,7 +16,7 @@ export class HttpErrorHandler {
 
   /** Create curried handleError function that already knows the service name */
   createHandleError = (serviceName = '') => <T>
-    (operation = 'operation', result = {} as T) => this.handleError(serviceName, operation, result);
+    (operation = 'operation', result = {} as T) => this.handleError(serviceName, operation, result)
 
   /**
    * Returns a function that handles Http operation failures.
@@ -44,10 +44,3 @@ export class HttpErrorHandler {
 
   }
 }
-
-
-/*
-Copyright 2017-2018 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

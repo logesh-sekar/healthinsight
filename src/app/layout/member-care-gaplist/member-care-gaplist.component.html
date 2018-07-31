@@ -8,7 +8,7 @@
             <p-table #dt  class="table  table-bordered table-hover" [scrollable]="false" [value]="membergaps" [columns]="cols" [paginator]="true" [rows]="20" [loading]="loading">
                 <ng-template pTemplate="header" >
                     <tr>
-                        <th *ngFor="let col of cols" [pSortableColumn]="col.field" >
+                        <th *ngFor="let col of cols" [pSortableColumn]="col.field" class="text-center align-middle" >
                             {{col.header}}
                             <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
@@ -30,6 +30,9 @@
                         <td *ngFor="let col of columns" [ngSwitch]="col.field">
                             <span *ngSwitchCase="'member_id'">
                                 <a [routerLink]="['/member-gap-list/',rowData[col.field]]">{{rowData[col.field]}}</a>
+                            </span>
+                            <span *ngSwitchCase="'name'">
+                                <a [routerLink]="['/spv/',rowData['member_id']]">{{rowData[col.field]}}</a>
                             </span>
                             <span *ngSwitchCase="'careGaps'">
                                 <a [routerLink]="['/member-gap/1/',rowData['member_id']]">{{rowData[col.field]}}</a>
