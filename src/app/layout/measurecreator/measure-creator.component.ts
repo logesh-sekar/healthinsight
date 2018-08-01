@@ -36,19 +36,22 @@ export class MeasurecreatorComponent implements OnInit {
    }
       this.myForm = this._fb.group({
         programName: ['', [Validators.required]],
-        Denominator: ['', [Validators.required]],
+        Denominator: [],
         MeasureTitle: ['', [Validators.required]],
-        Numerator: ['', [Validators.required]],
-        Description: ['', [Validators.required]],
-        TargetAge: ['', [Validators.required]],
+        Numerator: [],
+        Description: [],
+        TargetAge: [],
         NumeratorExclusions: [],
         DenominatorExclusion: [],
         MeasureDomain: [],
         Target: [],
         MeasureCategory: [],
         Type: [],
-        ClinicalConditions: [],
-        id: []
+        ClinicalCondition: [],
+        id: [],
+        startDate: [],
+        endDate: [],
+        Decommisioned:[]
       });
   }
 
@@ -60,7 +63,7 @@ export class MeasurecreatorComponent implements OnInit {
    this.myForm.controls['MeasureDomain'].setValue(measureInfo.measureDomain);
    this.myForm.controls['MeasureCategory'].setValue(measureInfo.measureCategory);
    this.myForm.controls['Type'].setValue(measureInfo.type);
-   this.myForm.controls['ClinicalConditions'].setValue(measureInfo.clinocalCondition);
+   this.myForm.controls['ClinicalCondition'].setValue(measureInfo.clinocalCondition);
    this.myForm.controls['Denominator'].setValue(measureInfo.denominator);
    this.myForm.controls['DenominatorExclusion'].setValue(measureInfo.denomExclusions);
    this.myForm.controls['Numerator'].setValue(measureInfo.numerator);
@@ -97,7 +100,7 @@ export class MeasurecreatorComponent implements OnInit {
    // call API to save
    // ...
    console.log('Model SavePC ' + JSON.stringify(model));
- this.measurecreatorService.MeasurecreatorSubmit(model).subscribe( model2 => console.log('Succeessfully Created Program Creator'));
+ this.measurecreatorService.MeasurecreatorSubmit(model).subscribe( model2 => console.log('Succeessfully Created Measure Creator'));
 }
 onSubmit() {
   if (this.myForm.valid) {
@@ -118,7 +121,9 @@ export interface Measurecreator {
     Numerator: string;
     Description: string;
     TargetAge: number;
-
+    ClinicalCondition: string;
+    startDate: Date;
+    endDate: Date;
    }
 
 

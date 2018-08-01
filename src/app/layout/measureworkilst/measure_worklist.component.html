@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col col-lg-12">
             <button type="button" pButton icon="fa fa-download" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
-            <p-table #dt  class="table table-bordered table-hover"  [scrollable]="false" [value]="membergaps" [columns]="cols" [paginator]="true" [rows]="5">
+            <p-table #dt  class="table table-bordered table-hover"  [scrollable]="false" [value]="membergaps" [columns]="cols" [paginator]="true" [rows]="20">
                 <ng-template pTemplate="header">
                     <tr>
                         <th *ngFor="let col of cols" [pSortableColumn]="col.field" class="text-center align-middle">
@@ -32,12 +32,15 @@
                             {{rowData[col.field]}}
                         </td>
                         <td>
-                            <i class="fa fa-2x fa-check-square"></i>&nbsp;
-                            <i class="fa fa-2x fa-window-close"></i>&nbsp;
-                            <span class="fa-stack fa-lg" style="cursor: pointer;" >
-                                <i class="fa fa-circle fa-stack-2x"></i>
+                            
+                            <i class="fa fa-2x fa-check-square" style="cursor:pointer"></i>&nbsp;
+                            <i class="fa fa-2x fa-window-close" style="cursor:pointer"></i>&nbsp;
+                            <i class="fa fa-2x fa-cog" style="cursor:pointer"></i>
+                         
+                            <!-- <span class="fa-stack fa-lg" style="cursor: pointer;" >
+                                <i class="fa fa-square fa-stack-2x"></i>
                                 <i class="fa fa-cog fa-stack-1x fa-inverse"></i>
-                            </span>
+                            </span> -->
                         </td>
                     </tr>
                 </ng-template>
