@@ -12,7 +12,8 @@
                     </div>
                     <div *ngIf="gaps" class="form-group row">
                         <div class="col col-lg-2 col-xl-2 ">
-                            <span class="font-weight-bold">MID</span> : {{gaps.memberId}}
+                            <span class="font-weight-bold">MID</span> :
+                            <a [routerLink]="['/spv', gaps.memberId]">{{gaps.memberId}}</a>
                         </div>
                         <div class="col col-lg-2 col-xl-2">
                             <span class="font-weight-bold">Name</span> : {{gaps.name}}
@@ -31,7 +32,7 @@
                     <div class="row" *ngIf="gaps">
                         <div class="col col-lg-12">
                             <button type="button" pButton icon="fa fa-download" label="Export" (click)="dt.exportCSV()" style="float:left"></button>
-                            <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps.careGaps" [columns]="cols" [paginator]="true" [rows]="5">
+                            <p-table #dt  class="table table-bordered table-hover" [scrollable]="false" [value]="gaps.qmsGicLifecycle" [columns]="cols" [paginator]="true" [rows]="5">
                                 <ng-template pTemplate="header" >
                                     <tr>
                                         <th *ngFor="let col of cols" [pSortableColumn]="col.field" class="text-center align-middle">

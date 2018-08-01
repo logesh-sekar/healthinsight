@@ -29,7 +29,7 @@ export class MemberGapInfoComponent implements OnInit {
         }
 
     ngOnInit() {
-        this.gapsService.getGaps(this.memberId).subscribe((data: CloseGaps) => {
+        this.gapsService.getGapsInfo(this.gapId, this.memberId).subscribe((data: CloseGaps) => {
             this.closeGaps = data;
             const gapsArray = this.closeGaps.careGaps;
             if (gapsArray.length) {

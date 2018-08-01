@@ -38,18 +38,23 @@ export class MemberGapListComponent implements OnInit {
     ngOnInit() {
         if (this.memberID) {
             this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
+                data.qmsGicLifecycle.forEach(element => {
+                    element.measureTitle = element.factHedisGapsInCare[0].measureTitle;
+                });
                 this.gaps = data;
+                // console.log('test', data.qmsGicLifecycle);
             });
         }
         this.cols = [
             { field: 'measureTitle', header: 'Care Gaps' },
-            { field: 'intervention', header: 'Interventions' },
+            { field: 'interventions', header: 'Interventions' },
             { field: 'priority', header: 'Priority' },
             // { field: 'payerComments', header: 'Payer Comments' },
             // { field: 'providerComments', header: 'Provider Comments' },
             { field: 'status', header: 'Status' },
-            { field: 'dateTime', header: 'Last Action Date' },
-            // { field: 'duration', header: 'Duration' },
+            { field: 'start_date', header: 'Start Date' },
+            { field: 'end_date', header: 'Last Action Date' },
+            { field: 'duration', header: 'Duration' },
         ];
     }
     search(event) {
@@ -67,6 +72,9 @@ export class MemberGapListComponent implements OnInit {
         if (match.length) {
             this.memberID = match[1];
             this.gapsService.getGaps(this.memberID).subscribe((data: any) => {
+                data.qmsGicLifecycle.forEach(element => {
+                    element.measureTitle = element.factHedisGapsInCare[0].measureTitle;
+                });
                 this.gaps = data;
                 // data.forEach(element => {
                 //     // const memberInfo: any = {};

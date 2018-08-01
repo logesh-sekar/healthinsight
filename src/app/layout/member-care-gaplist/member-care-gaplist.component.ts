@@ -54,11 +54,11 @@ export class MemberCareGapListComponent implements OnInit {
             { field: 'age', header: 'Age' },
             { field: 'gender', header: 'Gender' },
             { field: 'pcp', header: 'PCP' },
+            { field: 'plan', header: 'Plan' },
             { field: 'countOfCareGaps', header: 'Count of Care Gaps' },
             { field: 'careGaps', header: 'Care Gaps' },
             { field: 'status', header: 'Status' },
             { field: 'riskGrade', header: 'Risk Grade' },
-            { field: 'plan', header: 'Plan' },
             { field: 'timePeriod', header: 'Last Action Date' },
 
         ];

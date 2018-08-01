@@ -6,7 +6,7 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build --prod",
-        "gitbuild": "ng build --prod --base-href '/curis-beta/' --deploy-url '/curis-beta/'",
+        "gitbuild": "ng build --prod --base-href /curis-beta/ --deploy-url /curis-beta/",
         "test": "ng test",
         "test-ci": "TEST_CI=true ng test",
         "lint": "ng lint",

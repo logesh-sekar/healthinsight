@@ -9,13 +9,13 @@ export class GapsService {
     constructor(private http: CachedHttpClient) {}
 
     getGaps(memberID) {
-        return this.http.get(`http://healthinsight:8082/curis/closeGaps/${memberID}`);
+        return this.http.get(`http://healthinsight:8082/curis/memberGapList/member/${memberID}`);
     }
     getMemberGaps() {
         return this.http.get('http://healthinsight:8082/curis/memberGapList/findAllMembers');
     }
-    getGapsInfo(gapId) {
-        return this.http.get(`http://healthinsight:8082/curis/closeGaps/${gapId}`);
+    getGapsInfo(gapId, memberId) {
+        return this.http.get(`http://healthinsight:8082/curis/closeGaps/${memberId}/${gapId}`);
         // .pipe(
         //     map((items: any) => {
         //         return items.careGaps.filter(item => parseInt(gapId, 10)  === item.id );
@@ -38,8 +38,8 @@ export class GapsService {
     getWorkList() {
         return this.http.get(`http://healthinsight:8082/curis/qms/work_list/`);
     }
-    getLibrary() {
-        return this.http.get(`http://healthinsight:8082/curis/qms/measure_list/undefined/undefinded`);
+    getLibrary(programType, programValue) {
+        return this.http.get(`http://healthinsight:8082/curis/qms/measure_list/${programType}/${programValue}`);
     }
     getMeasureDetails() {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis_member_list`);
@@ -47,4 +47,5 @@ export class GapsService {
     getSpv(memberId) {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis/${memberId}`);
     }
+    
 }

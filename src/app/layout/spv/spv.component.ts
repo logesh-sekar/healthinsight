@@ -14,7 +14,7 @@ import { GapsService } from '../../shared/services/gaps.service';
 export class SpvComponent implements OnInit {
     memberId: string;
     membergaps: MemberCareGaps[];
-    patientProfileForm: any[];
+    patientProfileForm: any;
     constructor(private gapsService: GapsService, private route: ActivatedRoute) {
         this.route.params.subscribe(params => {
             if (params['memberId']) {
@@ -27,6 +27,6 @@ export class SpvComponent implements OnInit {
             this.patientProfileForm = data;
         });
        // console.log(pattientProfileForm.emailAddress);
-        this.patientProfileForm = [];
+        // this.patientProfileForm = [];
     }
 }

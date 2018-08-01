@@ -30,9 +30,10 @@ const routes: Routes = [
             { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measureworklist', component: MeasureworklistComponent},
             { path: 'measurelibrary', component: MeasurelibraryComponent},
+            { path: 'measurelibrary/:type/:value', component: MeasurelibraryComponent},
             { path: 'member-list', component: MemberListComponent},
             { path: 'measurecreator', component: MeasurecreatorComponent},
-            { path: 'measurecreator/:measureId', component: MeasurecreatorComponent},
+            { path: 'measurecreator/:measureId/:type', component: MeasurecreatorComponent},
             { path: 'spv/:memberId', component: SpvComponent},
         ]
     }

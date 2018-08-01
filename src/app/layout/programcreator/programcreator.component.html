@@ -24,17 +24,17 @@
             </div>
             <div class="form-group row">
                 <div formArrayName="programCategorys" class="col-md-12">
-                    <div *ngFor="let address of myForm.controls.programCategorys; let i=index;" class="panel panel-default">
+                    <div *ngFor="let address of formData.controls; let i=index;" class="panel panel-default">
                       <div [formGroupName]="i">
                           <div class="row" *ngIf="i==0">
                             <span class="col-lg-4">
-                              <label>Category Name*</label>
+                              <label>Category Name</label>
                             </span>
                             <span class="col-lg-3">
-                              <label>Max Points*</label>
+                              <label>Max Points</label>
                             </span>
                             <span class="col-lg-3">
-                              <label>Max Score*</label>
+                              <label>Max Score</label>
                             </span>
                           </div>
                           <div class="row">

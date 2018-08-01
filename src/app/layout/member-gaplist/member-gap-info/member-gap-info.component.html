@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <div *ngIf="gaps" class="card-text row">
                             <div class="col col-lg-2 col-xl-2 ">
-                                <span class="font-weight-bold">MID</span> : {{closeGaps.memberId}}
+                                <span class="font-weight-bold">MID</span> : <a [routerLink]="['/spv', closeGaps.memberId]">{{closeGaps.memberId}}</a>
                             </div>
                             <div class="col col-lg-2 col-xl-2">
                                 <span class="font-weight-bold">Name</span> : {{closeGaps.name}}
@@ -59,7 +59,7 @@
         </div>
         <div class="row  text-right">
             <div class="col col-lg-12 ">
-                <button pButton type="button" label="Submit" class="ui-button-success m-2"></button>
+                <button pButton type="button" [routerLink]="['/measurelibrary']" label="Submit" class="ui-button-primary m-2"></button>
                 <button pButton type="button" label="Cancel" class="ui-button-secondary m-2"></button>
             </div>
         </div>

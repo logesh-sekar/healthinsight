@@ -1,9 +1,9 @@
 <div >
+    <app-page-header [heading]="'Single Patient View'" [icon]="'fa-table'"></app-page-header>
 <div class="container card">
-  <h4>Single Patient View</h4>
   <div class="row">
  
-      <div class="col-lg-2 bg-secondary rounded">
+      <div class="col-lg-2 bg-secondary rounded m-1">
         <div class="text-center"><i class="fa fa-5x fa-user-circle-o "></i></div>
         <p><span class="font-weight-bold">Address</span> :{{patientProfileForm.address}}<br>
           <span class="font-weight-bold">Phone</span>: {{patientProfileForm.phone}}<br>
@@ -18,7 +18,7 @@
 				Address: <span [innerHtml]="patientProfileForm.providerAddress1"></span>,<br>
 				<span [innerHtml]="patientProfileForm.providerAddress2"></span></p>
       </div>
-      <div class="col-lg-10">
+      <div class="col-lg-9 m-1">
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
@@ -32,15 +32,14 @@
                 <span class="font-weight-bold">Gender</span>: {{patientProfileForm.gender}}<br>
                 <span class="font-weight-bold">Race/Ethinticity</span>: {{patientProfileForm.ethniCity}}<br></p>
             </div>
-            <div class="col-lg-3 MRA">
-              <br><br><br>
-              <p class="rounded bg-secondary">MRA Score: <span class="bg-primary rounded p-1">&nbsp;{{patientProfileForm.mraScore}}</span><br>
+            <div class="col-lg-3 MRA p-1">
+              <p class="rounded bg-secondary">MRA Score: <span class="bg-primary rounded p-1">{{patientProfileForm.mraScore}}</span><br>
 			        Risk: <span [innerHtml]="patientProfileForm.risk"></span></p>
             </div>
-            <div class="col-lg-3" style="cursor: pointer;">
+            <!-- <div class="col-lg-3" style="cursor: pointer;">
                <i class="fa fa-2x fa-envelope"></i>&nbsp;&nbsp;
                <i class="fa fa-2x fa-phone"></i>
-            </div>
+            </div> -->
           </div>
         </div>
         <br><hr><br>
@@ -59,8 +58,8 @@
                   </td>
                   <td>
                   <div class="div1">
-                    <span class="headings">Care Gaps</span>&nbsp;
-                    <span class="bg-primary rounded p-1">&nbsp;{{patientProfileForm.careGapsCount}}</span>
+                    <span class="headings" style="cursor: pointer;" [routerLink]="['/member-gap-list',  patientProfileForm.patId]">Care Gaps</span>&nbsp;
+                    <span class="bg-primary rounded p-1">{{patientProfileForm.careGapsCount}}</span>
                   </div>
                   <div class="div1 careGaps">
                     <div *ngFor="let member of patientProfileForm.careGaps">{{member}}</div>
@@ -76,7 +75,7 @@
                     Physician Name: Test,Physician<br>
                     Department: Test Department
                     </p>
-                  </div>
+                  </div> 
                  </td> 
                  <td>
                   <div class="div1 VisitCount">
@@ -100,17 +99,19 @@
                 </tr>
 					      <tr style="border:none;">
                   <td>
-                  <div class="div1 Procedures">
+                  <div class="col-lg-6">
                     <span class="headings">Procedures</span>
                     <div>{{patientProfileForm.procedureName1}} - {{patientProfileForm.procedureDateTime1}}</div>
                     <div>{{patientProfileForm.procedureName2}} - {{patientProfileForm.procedureDateTime2}}</div>
                   </div>
                   </td>   
                   <td >
-                      <div class="div1 Procedures">
+                      <div class="col-lg-8">
                       <span class="headings">Medical Prescription</span>
                   <div class="bg-secondary text-black rounded">
                     {{patientProfileForm.prescription}}
+                    
+                    <p>&nbsp;</p>
                   </div>
                   </div>
                   </td>  

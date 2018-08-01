@@ -1,12 +1,12 @@
 <div>
 <app-page-header [heading]="'Quality Central'" [icon]="'fa-table'"></app-page-header>
-<div class="card">
-<div class="row p-3">
-    <div class="col-sm-12 col-lg-4">
-        <div class="brand-card  ">
+<div class="card ">
+<div class="row p-3 ">
+    <div class="col-sm-12 col-lg-4 align-bottom">
+        <div class="brand-card  card-block">
             <div class="brand-card-header text-white pb-0 bg-secondary">
-                <div class="btn-group float-left">
-                        <img src="assets/images/Reembursement.png" width="60px" height="60px">
+                <div class="btn-group float-left icon-bg">
+                        <img src="assets/images/Reembursement.png" >
                 </div>
                 <div class="text-value">Quality Programs</div>
             </div>
@@ -14,7 +14,11 @@
                 <table>
                     <tr *ngFor="let program of programs; let i = index">
                         <td class="text-left">{{program}}</td>
-                        <td><i class="fa fa-th-list"></i></td>
+                        <td width="15%">
+                            <a href="http://healthinsight:8082/curis/MIPS.html"  *ngIf="i==0"> <i class="fa fa-pie-chart" ></i></a>
+                            <a href='http://192.168.184.70/views/CurisDashboard_HEDIS_1/HEDIS_Plan?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no' *ngIf="i==1"> <i class="fa fa-pie-chart" ></i></a>
+                            <span *ngIf="i>1"> &nbsp;&nbsp;&nbsp;</span>
+                            &nbsp;<a [routerLink]="['/measurelibrary','reimbursement', program]"><i class="fa fa-th-list"></i></a></td>
                     </tr>
                 </table>
             </div>
@@ -23,8 +27,8 @@
     <div class="col-sm-12 col-lg-4">
         <div class="brand-card  ">
             <div class="brand-card-header text-white pb-0 bg-secondary">
-                <div class="btn-group float-left">
-                        <img src="assets/images/Clinical.png" width="60px" height="60px">
+                <div class="btn-group float-left icon-bg">
+                        <img src="assets/images/Clinical.png" >
                 </div>
                 <div class="text-value">Clinical Conditions</div>
             </div>
@@ -32,7 +36,7 @@
                 <table>
                     <tr *ngFor="let clinicalCondition of clinicalConditions; let i = index">
                         <td class="text-left">{{clinicalCondition}}</td>
-                        <td><i class="fa fa-th-list"></i></td>
+                        <td><a [routerLink]="['/measurelibrary','clinical', clinicalCondition]"><i class="fa fa-th-list"></i></a></td>
                     </tr>
                 </table>
             </div>
@@ -41,8 +45,8 @@
     <div class="col-sm-12 col-lg-4">
         <div class="brand-card  ">
             <div class="brand-card-header text-white pb-0 bg-secondary">
-                <div class="btn-group float-left">
-                        <img src="assets/images/NQF.png" width="60px" height="60px">
+                <div class="btn-group float-left icon-bg">
+                        <img src="assets/images/NQF.png">
                 </div>
                 <div class="text-value">NQF Domain</div>
             </div>
@@ -50,7 +54,7 @@
                 <table>
                     <tr *ngFor="let measureDomain of measureDomains; let i = index">
                         <td class="text-left">{{measureDomain.name}}</td>
-                        <td><i class="fa fa-th-list"></i></td>
+                        <td><a [routerLink]="['/measurelibrary','nqf', measureDomain.value]"><i class="fa fa-th-list"></i></a></td>
                     </tr>
                 </table>
             </div>

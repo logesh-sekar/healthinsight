@@ -32,11 +32,12 @@ export class ProgramcreatorComponent implements OnInit {
 
   initProgramCategorys() {
       return this._fb.group({
-        categoryName: ['', Validators.required],
-        maxPoints: ['', Validators.required],
-        maxScore: ['', Validators.required]
+        categoryName: [''],
+        maxPoints: [''],
+        maxScore: ['']
       });
   }
+  get formData() { return <FormArray>this.myForm.get('programCategorys'); }
 
   addCategory() {
       const control = <FormArray>this.myForm.controls['programCategorys'];

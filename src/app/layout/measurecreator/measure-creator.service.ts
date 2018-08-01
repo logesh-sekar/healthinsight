@@ -37,5 +37,7 @@ export class MeasurecreatorService {
        // this.http.post('http://<hostname>:<port>/curis/qms/createProgram',model);
   }
 
-
+  getMeasuerInfo(measureId) {
+    return this.http.get(`http://healthinsight:8082/curis/qms/measure_list/${measureId}`);
+  }
 }

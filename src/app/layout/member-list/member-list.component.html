@@ -26,8 +26,14 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr>
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
+                        <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                                <span *ngSwitchCase="'id'">
+                                    <a [routerLink]="['/member-gap-list/',rowData[col.field]]">{{rowData[col.field]}}</a>
+                                </span>
+                                <span *ngSwitchCase="'name'">
+                                    <a [routerLink]="['/spv/',rowData['id']]">{{rowData[col.field]}}</a>
+                                </span>
+                                <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                         </td>
                     </tr>
                 </ng-template>

@@ -48,7 +48,7 @@ export const navItems = [
         children: [
           {
             name: 'Measure Creator',
-            url: 'http://healthinsight:8082/curis/hleft.jsp#!/Final_Creator',
+            url: '/measurecreator',
             icon: 'fa fa-sliders'
           },
           {
@@ -81,7 +81,7 @@ export const navItems = [
     children: [
       {
         name: 'Care Summary',
-        url: 'http://192.168.184.70/views/Gaps_in_Care_Dashboard/CareGapSummaryDashboard?:iid=1&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        url: 'http://192.168.184.70/views/Gaps_in_Care_Dashboard/CareGapSummaryDashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-handshake-o'
       },
       {
@@ -103,17 +103,17 @@ export const navItems = [
     children: [
       {
         name: 'PHM SUMMARY',
-        url: 'http://192.168.184.70/views/PHM_Summary_Dashboard/Dashboard4?:iid=5&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        url: 'http://192.168.184.70/views/PHMsummary/PHMPerformanceSummaryDashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
         name: 'Risk Assessment',
-        url: 'http://192.168.184.70/views/PHMRiskDashboard/PHMRisk_Dashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        url: 'http://192.168.184.70/views/PHMRiskDashboard_0/PHMRisk_Dashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
         name: 'Measure Analysis',
-        url: 'http://192.168.184.70/views/PHMMeasuressDashboard/Template_2?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        url: 'http://192.168.184.70/views/PHMMeasuressDashboard/PHMMeasures?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
@@ -123,7 +123,12 @@ export const navItems = [
       },
       {
         name: 'Geo Analysis',
-        url: 'http://192.168.184.70/views/Location_Dashboard/PHM_Location_Dashboard?:iid=4&:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        url: 'http://192.168.184.70/views/Location_Dashboard_0/PHMLocationDashboard?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
+        icon: 'fa fa-user-o'
+      },
+      {
+        name: 'Cohort',
+        url: 'http://192.168.184.70/views/FinalDashboardPHM/Cohort?:embed=y&:showAppBanner=false&:showShareOptions=true&:display_count=no&:showVizHome=no',
         icon: 'fa fa-user-o'
       },
       {
