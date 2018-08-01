@@ -28,11 +28,18 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr >
-                        <td *ngFor="let col of columns" style="cursor: pointer;" (click)="copytoCreator(rowData['id'], 1)">
-                            {{rowData[col.field]}}
+                        <td *ngFor="let col of columns" style="cursor: pointer;" (click)="copytoCreator(rowData['id'], 1)" [ngSwitch]="col.field">
+                                <span *ngSwitchCase="'isActive'" >
+                                    <i class="fa fa-toggle-on text-primary" *ngIf="rowData['isActive'] == 'Y'">Active</i>
+                                    <i class="fa fa-toggle-off text-secondary" *ngIf="rowData['isActive'] != 'Y'">Decommisioned</i>
+                                </span>
+                                <span *ngSwitchDefault>
+                                    {{rowData[col.field]}}
+                                </span>
+                            
                         </td>
-                        <td (click)="copytoCreator(rowData['id'], 0)" style="cursor: pointer;">
-                            <i class="fa fa-copy"></i>
+                        <td >
+                            <i class="fa fa-copy" (click)="copytoCreator(rowData['id'], 0)" style="cursor: pointer;"></i>&nbsp;<i class="fa fa-pie-chart"></i>
                         </td>
                     </tr>
                 </ng-template>

@@ -37,6 +37,7 @@ export class MeasurelibraryComponent implements OnInit {
             { field: 'type', header: 'Measure Type' },
             { field: 'steward', header: 'Measure Steward' },
             { field: 'clinocalCondition', header: 'Clinical Condition' },
+            { field: 'isActive', header: 'Active'}
         ];
     }
     copytoCreator(id, newType) {
