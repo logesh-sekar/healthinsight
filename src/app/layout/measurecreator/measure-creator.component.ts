@@ -100,7 +100,7 @@ export class MeasurecreatorComponent implements OnInit {
    // call API to save
    // ...
    console.log('Model SavePC ' + JSON.stringify(model));
- this.measurecreatorService.MeasurecreatorSubmit(model).subscribe( model2 => console.log('Succeessfully Created Program Creator'));
+ this.measurecreatorService.MeasurecreatorSubmit(model).subscribe( model2 => console.log('Succeessfully Created Measure Creator'));
 }
 onSubmit() {
   if (this.myForm.valid) {

@@ -54,7 +54,7 @@ export class MemberGapListComponent implements OnInit {
             { field: 'status', header: 'Status' },
             { field: 'start_date', header: 'Start Date' },
             { field: 'end_date', header: 'Last Action Date' },
-            { field: 'duration', header: 'Duration' },
+            { field: 'duration', header: 'Aging' },
         ];
     }
     search(event) {

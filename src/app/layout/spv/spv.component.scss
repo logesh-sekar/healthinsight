@@ -1,6 +1,8 @@
 
 
-
+.sidenav{
+    height: 80vh;
+}
      
 .aside {
 height: 20vh;
@@ -78,4 +80,10 @@ border-width: 1px;
     padding: 20px; 
         width: 150px;
     height: 80px;   
+}
+
+@media(max-width: 980px){
+    .sidenav{
+    height: auto;
+    }
 }
