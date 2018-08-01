@@ -13,12 +13,14 @@ import { MeasurelibraryComponent } from './measurelibrary/measure-library.compon
 import { MemberListComponent } from './member-list/member-list.component';
 import { MeasurecreatorComponent } from './measurecreator/measure-creator.component';
 import { SpvComponent } from './spv/spv.component';
+import { ConfiguratorComponent } from './configurator/configurator.component';
 const routes: Routes = [
     {
         path: '',
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
+            { path: 'configurator', component: ConfiguratorComponent },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'frame-url/:url', component: FrameUrlComponent },
             { path: 'member-gap-list', component: MemberGapListComponent },

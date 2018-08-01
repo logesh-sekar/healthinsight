@@ -58,7 +58,7 @@ export const navItems = [
           },
           {
             name: 'Configurator',
-            url: 'http://healthinsight:8082/curis/hleft.jsp#!/Measure_Configurator',
+            url: '/configurator',
             icon: 'fa fa-sliders'
           },
           {
