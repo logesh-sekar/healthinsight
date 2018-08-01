@@ -25,6 +25,7 @@ import { MeasurelibraryComponent } from './measurelibrary/measure-library.compon
 import { MemberListComponent } from './member-list/member-list.component';
 import { MeasurecreatorComponent } from './measurecreator/measure-creator.component';
 import { SpvComponent } from './spv/spv.component';
+import { ConfiguratorComponent } from './configurator/configurator.component';
 import { QualityCentralComponent } from './quality-central/quality-central.component';
 import { PageHeaderModule } from '../shared/modules/page-header/page-header.module';
 import { SidebarToggleDirective, AsideToggleDirective, SidebarMinimizeDirective,
@@ -35,6 +36,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SliderModule } from 'primeng/slider';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { PanelModule } from 'primeng/panel';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
@@ -51,6 +53,7 @@ import { CalendarModule } from 'primeng/calendar';
         SliderModule,
         ReactiveFormsModule,
         CalendarModule,
+        PanelModule,
         AutoCompleteModule,
         FormsModule,
         NgbDropdownModule.forRoot()
@@ -84,6 +87,7 @@ import { CalendarModule } from 'primeng/calendar';
         MeasurelibraryComponent,
         MemberListComponent,
         SpvComponent,
+        ConfiguratorComponent,
         QualityCentralComponent,
         MemberGapInfoComponent,
         MeasurecreatorComponent,

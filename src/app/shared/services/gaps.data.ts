@@ -36,3 +36,16 @@ export enum priorityTypes {
     Low = 'Low'
 }
 
+export interface Configurator {
+    expression: string;
+    remarks: Date;
+    conditionList: Condition[];
+}
+
+export interface Condition {
+    andOrCondition: string;
+    tableName: number;
+    columnName: number;
+    expression: number;
+}
+

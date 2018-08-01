@@ -47,5 +47,4 @@ export class GapsService {
     getSpv(memberId) {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis/${memberId}`);
     }
-    
 }
