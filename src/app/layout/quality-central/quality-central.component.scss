@@ -16,7 +16,9 @@
     }
 }
 .card {
-    min-height: 80vh;
+    .row{
+        min-height: 80vh;
+    } 
 }
 .text-value{
         font-size: 1.6rem;
