@@ -47,13 +47,13 @@ export const navItems = [
         icon: 'fa fa-sliders',
         children: [
           {
-            name: 'Measure Creator',
-            url: '/measurecreator',
+            name: 'Program Creator',
+            url: '/programcreator',
             icon: 'fa fa-sliders'
           },
           {
-            name: 'Program Creator',
-            url: '/programcreator',
+            name: 'Measure Creator',
+            url: '/measurecreator',
             icon: 'fa fa-sliders'
           },
           {

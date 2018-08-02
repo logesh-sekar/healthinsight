@@ -47,4 +47,12 @@ export class GapsService {
     getSpv(memberId) {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis/${memberId}`);
     }
+    getMeasuerInfo(measureId) {
+        return this.http.get(`http://healthinsight:8082/curis/qms/work_list/${measureId}`);
+    }
+    createMeasure(model: any) {
+        console.log('MeasurecreatorClick');
+        return this.http.post('http://healthinsight:8082/curis/qms/work_list/', model);
+       // this.http.post('http://<hostname>:<port>/curis/qms/createProgram',model);
+  }
 }

@@ -5,12 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { GrowlModule } from 'primeng/growl';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, SafePipe } from './app.component';
 import { AuthGuard } from './shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProgramcreatorComponent } from './layout/programcreator/programcreator.component';
 import { HttpErrorHandler } from './shared/services/http-error-handler.service';
 import { MessageService } from './shared/services/message.service';
 
@@ -25,6 +24,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        GrowlModule,
         ReactiveFormsModule,
         HttpClientModule,
         TranslateModule.forRoot({
