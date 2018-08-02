@@ -29,6 +29,12 @@ export class GapsService {
     getPrograms() {
         return this.http.get(`http://healthinsight:8082/curis/qms/qmshome_dropdown_list/QMS_MEASURE/PROGRAM_NAME`);
     }
+    getMeasureCategories() {
+        return this.http.get(`http://healthinsight:8082/curis/qms/dropdown_namevalue_list/qms_quality_program/PROGRAM_NAME/CATEGORY_NAME`);
+    }
+    getMeasureTypes() {
+        return this.http.get(`http://healthinsight:8082/curis/qms/dropdown_namevalue_list/QMS_MEASURE_TYPE/MEASURE_TYPE_ID/MEASURE_TYPE_NAME`);
+    }
     getClinicalConditions() {
         return this.http.get(`http://healthinsight:8082/curis/qms/qmshome_dropdown_list/QMS_MEASURE/CLINICAL_CONDITIONS`);
     }
@@ -47,12 +53,18 @@ export class GapsService {
     getSpv(memberId) {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis/${memberId}`);
     }
-    getMeasuerInfo(measureId) {
+    getMeasureInfo(measureId) {
         return this.http.get(`http://healthinsight:8082/curis/qms/work_list/${measureId}`);
     }
     createMeasure(model: any) {
-        console.log('MeasurecreatorClick');
-        return this.http.post('http://healthinsight:8082/curis/qms/work_list/', model);
+        if (model.id) {
+            return this.http.put(`http://healthinsight:8082/curis/qms/work_list/${model.id}`, model);
+        } else {
+            return this.http.post(`http://healthinsight:8082/curis/qms/work_list/`, model);
+        }
        // this.http.post('http://<hostname>:<port>/curis/qms/createProgram',model);
-  }
+    }
+    setMeasureStatus(measureId, status) {
+        return this.http.put(`http://healthinsight:8082/curis/qms/work_list/status/${measureId}/${status}`, {});
+    }
 }

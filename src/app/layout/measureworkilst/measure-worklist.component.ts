@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { MemberCareGaps } from '../../shared/services/gaps.data';
 import { GapsService } from '../../shared/services/gaps.service';
+import { MessageService } from '../../shared/services/message.service';
 import { Router } from '@angular/router';
 @Component({
     selector: 'app-tables',
@@ -11,7 +12,9 @@ import { Router } from '@angular/router';
     providers: [GapsService]
 })
 export class MeasureworklistComponent implements OnInit {
-    constructor(private gapsService: GapsService, public router: Router) {}
+    constructor(private gapsService: GapsService,
+        private msgService: MessageService,
+         public router: Router) {}
     membergaps: MemberCareGaps[];
     cols: any[];
     ngOnInit() {
@@ -29,5 +32,14 @@ export class MeasureworklistComponent implements OnInit {
     }
     copytoCreator(id, newType) {
         this.router.navigate(['/measurecreator', id, newType]);
+   }
+   statusClickImg(status, id) {
+       this.gapsService.setMeasureStatus(id, status).subscribe( (res: any) => {
+        if (res.status === 'SUCCESS') {
+            this.msgService.success('Measure approved Successfully');
+          } else {
+            this.msgService.success(res.message);
+          }
+       });
    }
 }

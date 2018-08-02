@@ -92,4 +92,22 @@ export class CachedHttpClient {
         catchError(error =>
           errorHandler(error)));
     }
+    put(url: string, param: {}, errorHandler: ErrorHandler  = this.handleError): Observable<{}> {
+      const responseType = 'json';
+      let body = param;
+      this.headers = new HttpHeaders({
+          'Content-Type': 'application/json'
+      });
+      body = JSON.stringify(param);
+      this.options = {
+          headers: this.headers,
+          responseType: responseType,
+          withCredentials: true
+      };
+      return this.http.put(url, body, this.options).pipe(
+          map(data =>
+              this.handleResponse(data)),
+          catchError(error =>
+            errorHandler(error)));
+      }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID  } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { GapsService } from '../../shared/services/gaps.service';
 import { MessageService } from '../../shared/services/message.service';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,6 +22,8 @@ export class MeasurecreatorComponent implements OnInit {
   type: string;
   programList: any;
   measureDomainList: any;
+  measureCategories: any;
+  measureTypes: any;
   constructor(private _fb: FormBuilder,
     private gapsService: GapsService,
     private msgService: MessageService,
@@ -46,8 +49,20 @@ export class MeasurecreatorComponent implements OnInit {
       this.measureDomainList.push({label: element.name, value: element.name});
     });
   });
+  this.gapsService.getMeasureCategories().subscribe((data: any) => {
+    this.measureCategories = [];
+    data.forEach(element => {
+      this.measureCategories.push({label: element.name, value: element.name});
+    });
+  });
+  this.gapsService.getMeasureTypes().subscribe((data: any) => {
+    this.measureTypes = [];
+    data.forEach(element => {
+      this.measureTypes.push({label: element.name, value: element.value});
+    });
+  });
    if (this.measureId) {
-    this.gapsService.getMeasuerInfo(this.measureId).subscribe((data: any) => {
+    this.gapsService.getMeasureInfo(this.measureId).subscribe((data: any) => {
       this.setMeasureInfo(data);
     });
    }
@@ -65,9 +80,9 @@ export class MeasurecreatorComponent implements OnInit {
         measureCategory: [],
         type: [],
         clinocalCondition: [],
-        measureEditId: [],
         startDate: [],
         endDate: [],
+        id: [],
         Decommisioned: []
       });
   }
@@ -86,10 +101,14 @@ export class MeasurecreatorComponent implements OnInit {
    this.myForm.controls['numerator'].setValue(measureInfo.numerator);
    this.myForm.controls['numeratorExclusions'].setValue(measureInfo.numeratorExclusions);
    this.myForm.controls['target'].setValue(measureInfo.target);
-   this.myForm.controls['startDate'].setValue(measureInfo.startDate);
-   this.myForm.controls['endDate'].setValue(measureInfo.endDate);
+   if (measureInfo.startDate) {
+    this.myForm.controls['startDate'].setValue(new Date(measureInfo.startDate));
+   }
+   if (measureInfo.endDate) {
+    this.myForm.controls['endDate'].setValue(new Date(measureInfo.endDate));
+   }
    if (this.type === '1') {
-    this.myForm.controls['measureId'].setValue(measureInfo.id);
+    this.myForm.controls['id'].setValue(measureInfo.id);
    }
  }
  validateAllFormFields(formGroup: FormGroup) {
@@ -109,6 +128,8 @@ export class MeasurecreatorComponent implements OnInit {
       // call API to save
       // ...
       model.status = 'New';
+      model.startDate = this.formatDate(model.startDate);
+      model.endDate = this.formatDate(model.endDate);
     this.gapsService.createMeasure(model).subscribe( (res: any) => {
       if (res.status === 'SUCCESS') {
         this.msgService.success('Measure created Successfully');
@@ -116,7 +137,7 @@ export class MeasurecreatorComponent implements OnInit {
         this.msgService.success(res.message);
       }
     } );
-    this.router.navigateByUrl('/measurelibrary');
+    this.router.navigateByUrl('/measureworklist');
   }
 
   savePc(model: Measurecreator, isValid: boolean) {
@@ -125,6 +146,9 @@ export class MeasurecreatorComponent implements OnInit {
    // call API to save
    // ...
    model.status = 'Open';
+   model.startDate = this.formatDate(model.startDate);
+   model.endDate = this.formatDate(model.endDate);
+   // console.log(model);
   this.gapsService.createMeasure(model).subscribe( (res: any) => {
       if (res.status === 'SUCCESS') {
         this.msgService.success('Measure saved Successfully');
@@ -132,16 +156,41 @@ export class MeasurecreatorComponent implements OnInit {
         this.msgService.success(res.message);
       }
     } );
-}
-onSubmit() {
-  if (this.myForm.valid) {
-    this.submitPc(this.myForm.value, this.myForm.valid);
-  } else {
-    this.validateAllFormFields(this.myForm);
   }
-}
-
-
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.submitPc(this.myForm.value, this.myForm.valid);
+    } else {
+      this.validateAllFormFields(this.myForm);
+    }
+  }
+  inActiveMeasure(model) {
+    this.myForm.controls['endDate'].setValidators([Validators.required]);
+    this.myForm.controls['endDate'].updateValueAndValidity();
+    this.myForm.controls['endDate'].markAsTouched();
+    model.isActive = 'N';
+    model.status = 'In-active';
+    model.startDate = this.formatDate(model.startDate);
+    model.endDate = this.formatDate(model.endDate);
+    if (this.myForm.valid) {
+      this.gapsService.createMeasure(model).subscribe( (res: any) => {
+        if (res.status === 'SUCCESS') {
+          this.msgService.success('Measure saved Successfully');
+          this.router.navigateByUrl('/measurelibrary');
+        } else {
+          this.msgService.success(res.message);
+        }
+      } );
+    }
+  }
+  formatDate(dateString) {
+    if (dateString) {
+      const datePipe = new DatePipe('en-US');
+      return datePipe.transform(dateString, 'dd-MMM-yy');
+    } else {
+      return null;
+    }
+  }
 }
 
 
@@ -153,10 +202,8 @@ export interface Measurecreator {
     description: string;
     targetAge: number;
     clinocalCondition: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
     status: string;
+    id: string;
    }
-
-
- 

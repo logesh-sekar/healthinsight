@@ -56,11 +56,11 @@ export const navItems = [
             url: '/measurecreator',
             icon: 'fa fa-sliders'
           },
-          {
-            name: 'Configurator',
-            url: '/configurator',
-            icon: 'fa fa-sliders'
-          },
+          // {
+          //   name: 'Configurator',
+          //   url: '/configurator',
+          //   icon: 'fa fa-sliders'
+          // },
           {
             name: 'My Measures',
             url: '/measureworklist',
