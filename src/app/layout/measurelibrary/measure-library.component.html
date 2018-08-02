@@ -29,9 +29,9 @@
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr >
                         <td *ngFor="let col of columns" style="cursor: pointer;" (click)="copytoCreator(rowData['id'], 1)" [ngSwitch]="col.field">
-                                <span *ngSwitchCase="'isActive'" >
-                                    <i class="fa fa-toggle-on text-primary" *ngIf="rowData['isActive'] == 'Y'">Active</i>
-                                    <i class="fa fa-toggle-off text-secondary" *ngIf="rowData['isActive'] != 'Y'">Decommisioned</i>
+                                <span *ngSwitchCase="'status'" >
+                                    <i class="text-primary" *ngIf="rowData['status'] != 'In-active'">{{rowData['status']}}</i>
+                                    <i class="text-danger" *ngIf="rowData['status'] == 'In-active'">Decommisioned</i>
                                 </span>
                                 <span *ngSwitchDefault>
                                     {{rowData[col.field]}}

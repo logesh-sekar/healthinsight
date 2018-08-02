@@ -22,6 +22,7 @@ export class MeasurecreatorComponent implements OnInit {
   type: string;
   programList: any;
   measureDomainList: any;
+  measureCategoriesList: any;
   measureCategories: any;
   measureTypes: any;
   constructor(private _fb: FormBuilder,
@@ -37,10 +38,10 @@ export class MeasurecreatorComponent implements OnInit {
     }
 
  ngOnInit() {
-  this.gapsService.getPrograms().subscribe((data: any) => {
+  this.gapsService.getDropDownPrograms().subscribe((data: any) => {
     this.programList = [];
     data.forEach(element => {
-      this.programList.push({label: element, value: element});
+      this.programList.push({label: element.name, value: element.name});
     });
   });
   this.gapsService.getMeasureDomain().subscribe((data: any) => {
@@ -50,10 +51,7 @@ export class MeasurecreatorComponent implements OnInit {
     });
   });
   this.gapsService.getMeasureCategories().subscribe((data: any) => {
-    this.measureCategories = [];
-    data.forEach(element => {
-      this.measureCategories.push({label: element.name, value: element.name});
-    });
+    this.measureCategoriesList = data;
   });
   this.gapsService.getMeasureTypes().subscribe((data: any) => {
     this.measureTypes = [];
@@ -133,11 +131,11 @@ export class MeasurecreatorComponent implements OnInit {
     this.gapsService.createMeasure(model).subscribe( (res: any) => {
       if (res.status === 'SUCCESS') {
         this.msgService.success('Measure created Successfully');
+        this.router.navigateByUrl('/measureworklist?fetch');
       } else {
-        this.msgService.success(res.message);
+        this.msgService.error(res.message);
       }
     } );
-    this.router.navigateByUrl('/measureworklist');
   }
 
   savePc(model: Measurecreator, isValid: boolean) {
@@ -152,8 +150,9 @@ export class MeasurecreatorComponent implements OnInit {
   this.gapsService.createMeasure(model).subscribe( (res: any) => {
       if (res.status === 'SUCCESS') {
         this.msgService.success('Measure saved Successfully');
+        this.router.navigateByUrl('/measureworklist?fetch');
       } else {
-        this.msgService.success(res.message);
+        this.msgService.error(res.message);
       }
     } );
   }
@@ -176,9 +175,9 @@ export class MeasurecreatorComponent implements OnInit {
       this.gapsService.createMeasure(model).subscribe( (res: any) => {
         if (res.status === 'SUCCESS') {
           this.msgService.success('Measure saved Successfully');
-          this.router.navigateByUrl('/measurelibrary');
+          this.router.navigateByUrl('/measurelibrary?fetch');
         } else {
-          this.msgService.success(res.message);
+          this.msgService.error(res.message);
         }
       } );
     }
@@ -190,6 +189,13 @@ export class MeasurecreatorComponent implements OnInit {
     } else {
       return null;
     }
+  }
+  filterCategory(event) {
+    this.measureCategories = [];
+    const elementList = this.measureCategoriesList.filter(ele => ele.value === event.value);
+    elementList.forEach(element => {
+      this.measureCategories.push({label: element.name, value: element.name});
+    });
   }
 }
 

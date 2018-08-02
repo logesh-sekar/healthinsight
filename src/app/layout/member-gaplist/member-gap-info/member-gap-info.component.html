@@ -27,6 +27,7 @@
                 </div>
             </div>
             <div class="col col-lg-12">
+                <form [formGroup]="closeGapForm" class="form-horizontal" novalidate >
                 <table class="table table-bordered table-hover" >
                     <thead>
                         <tr>
@@ -44,22 +45,23 @@
                                 <span *ngSwitchCase="'dateTime'"> 
                                     {{gapsElement[col.field] | date}}
                                 </span>
-                                <p-dropdown *ngSwitchCase="'status'" [(ngModel)]="gapsElement[col.field]" [options]="statusTypes" [style]="{'width':'100%'}" ></p-dropdown>
-                                <p-dropdown *ngSwitchCase="'priority'" [(ngModel)]="gapsElement[col.field]" [options]="priorityTypes" [style]="{'width':'100%'}" ></p-dropdown>
+                                <p-dropdown formControlName="status" *ngSwitchCase="'status'" [(ngModel)]="gapsElement[col.field]" [options]="statusTypes" [style]="{'width':'100%'}" ></p-dropdown>
+                                <p-dropdown formControlName="priority" *ngSwitchCase="'priority'" [(ngModel)]="gapsElement[col.field]" [options]="priorityTypes" [style]="{'width':'100%'}" ></p-dropdown>
                                 <span *ngSwitchDefault>
-                                    <textarea [(ngModel)]="gapsElement[col.field]" [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize"></textarea>
+                                    <textarea [formControlName]="col.field"  [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize">{{gapsElement[col.field]}}</textarea>
                                 </span> 
                             
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                </form>
                 <p-fileUpload name="myfile[]" url="#" multiple="multiple" accept="image/*" maxFileSize="1000000"></p-fileUpload>
             </div>
         </div>
         <div class="row  text-right">
             <div class="col col-lg-12 ">
-                <button pButton type="button" [routerLink]="['/measurelibrary']" label="Submit" class="ui-button-primary m-2"></button>
+                <button pButton type="button" (click)="onSubmit(this.closeGapForm.value)" label="Submit" class="ui-button-primary m-2"></button>
                 <button pButton type="button" label="Cancel" class="ui-button-secondary m-2"></button>
             </div>
         </div>

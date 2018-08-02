@@ -35,7 +35,7 @@
                                 <a [routerLink]="['/spv/',rowData['member_id']]">{{rowData[col.field]}}</a>
                             </span>
                             <span *ngSwitchCase="'careGaps'">
-                                <a [routerLink]="['/member-gap/0/',rowData['member_id']]">{{rowData[col.field]}}</a>
+                                <a [routerLink]="['/member-gap', rowData['qualityMeasureId'], rowData['member_id']]">{{rowData[col.field]}}</a>
                             </span>
                             <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                             

@@ -11,7 +11,7 @@
               </div>
               <div class="row">
                 <span class="col-lg-5">
-                  <p-dropdown  styleClass="form-control" [options]="programList" formControlName="programName"></p-dropdown>
+                  <p-dropdown placeholder="Select" [autoDisplayFirst]="false"  styleClass="form-control" [options]="programList" formControlName="programName" (onChange)="filterCategory($event)"></p-dropdown>
                 </span>
                 <span class="col-lg-5">
                   <input type="text" class="form-control" formControlName="name">
@@ -48,10 +48,10 @@
               </div>
               <div class="row">
                 <span class="col-lg-5">
-                  <p-dropdown  styleClass="form-control" [options]="measureDomainList" formControlName="measureDomain"></p-dropdown>
+                  <p-dropdown placeholder="Select" [autoDisplayFirst]="false"  styleClass="form-control" [options]="measureDomainList" formControlName="measureDomain"></p-dropdown>
                 </span>
                 <span class="col-lg-5">
-                  <p-dropdown  styleClass="form-control" [options]="measureCategories" formControlName="measureCategory"></p-dropdown>
+                  <p-dropdown placeholder="Select" [autoDisplayFirst]="false"  styleClass="form-control" [options]="measureCategories" formControlName="measureCategory"></p-dropdown>
                 </span>
               </div>
               <div class="row">
@@ -60,7 +60,7 @@
               </div>
               <div class="row">
                 <span class="col-lg-5">
-                  <p-dropdown  styleClass="form-control" [options]="measureTypes" formControlName="type"></p-dropdown>
+                  <p-dropdown placeholder="Select" [autoDisplayFirst]="false"  styleClass="form-control" [options]="measureTypes" formControlName="type"></p-dropdown>
                 </span>
                 <span class="col-lg-5">
                   <input type="text" class="form-control" formControlName="clinocalCondition">

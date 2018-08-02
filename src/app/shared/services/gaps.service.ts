@@ -29,6 +29,9 @@ export class GapsService {
     getPrograms() {
         return this.http.get(`http://healthinsight:8082/curis/qms/qmshome_dropdown_list/QMS_MEASURE/PROGRAM_NAME`);
     }
+    getDropDownPrograms() {
+        return this.http.get(`http://healthinsight:8082/curis/qms/dropdown_namevalue_list/qms_quality_program/PROGRAM_ID/PROGRAM_NAME`);
+    }
     getMeasureCategories() {
         return this.http.get(`http://healthinsight:8082/curis/qms/dropdown_namevalue_list/qms_quality_program/PROGRAM_NAME/CATEGORY_NAME`);
     }
@@ -42,10 +45,10 @@ export class GapsService {
         return this.http.get(`http://healthinsight:8082/curis/qms/dropdown_namevalue_list/QMS_MEASURE_DOMAIN/MEASURE_DOMAIN_ID/MEASURE_DOMAIN_NAME`);
     }
     getWorkList() {
-        return this.http.get(`http://healthinsight:8082/curis/qms/work_list/`);
+        return this.http.get(`http://healthinsight:8082/curis/qms/work_list/`, 0 , true);
     }
     getLibrary(programType, programValue) {
-        return this.http.get(`http://healthinsight:8082/curis/qms/measure_list/${programType}/${programValue}`);
+        return this.http.get(`http://healthinsight:8082/curis/qms/measure_list/${programType}/${programValue}`, 0 , true);
     }
     getMeasureDetails() {
         return this.http.get(`http://healthinsight:8082/curis/qms/spv/hedis_member_list`);
@@ -66,5 +69,8 @@ export class GapsService {
     }
     setMeasureStatus(measureId, status) {
         return this.http.put(`http://healthinsight:8082/curis/qms/work_list/status/${measureId}/${status}`, {});
+    }
+    updateCloseGaps(closeGapModel, memberId, gapId) {
+        return this.http.post(`http://healthinsight:8082/curis/closeGaps/${memberId}/${gapId}`, { 'careGaps': [closeGapModel]});
     }
 }
