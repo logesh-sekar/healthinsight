@@ -35,7 +35,7 @@
                             <div *ngSwitchCase="'Approved'" >
                                 <i class="fa fa-2x fa-check-square text-secondary" ></i>&nbsp;
                                 <i class="fa fa-2x fa-window-close text-secondary" ></i>&nbsp;
-                                <a href="http://healthinsight:8082/curis/Configurator/measure_config.jsp"><i class="fa fa-2x fa-cog text-primary" style="cursor:pointer" ></i></a>
+                                <a [routerLink]="['/frame-url','http://healthinsight:8082/curis/hleft.jsp#!/Measure_Configurator']"><i class="fa fa-2x fa-cog text-primary" style="cursor:pointer" ></i></a>
                             </div>
                             <div *ngSwitchCase="'New'">
                                 <i class="fa fa-2x fa-check-square text-primary" style="cursor:pointer" (click)="statusClickImg('Approved',rowData['id'])"></i>&nbsp;

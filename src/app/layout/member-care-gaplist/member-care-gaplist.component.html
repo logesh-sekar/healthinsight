@@ -37,6 +37,9 @@
                             <span *ngSwitchCase="'careGaps'">
                                 <a [routerLink]="['/member-gap', rowData['qualityMeasureId'], rowData['member_id']]">{{rowData[col.field]}}</a>
                             </span>
+                            <span *ngSwitchCase="'timePeriod'">
+                                    {{rowData[col.field] | date}}
+                                </span>
                             <span *ngSwitchDefault>{{rowData[col.field]}}</span>
                             
                         </td>

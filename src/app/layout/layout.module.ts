@@ -37,6 +37,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SliderModule } from 'primeng/slider';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { PanelModule } from 'primeng/panel';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { ProgramcreatorComponent } from './programcreator/programcreator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
@@ -54,6 +55,7 @@ import { CalendarModule } from 'primeng/calendar';
         ReactiveFormsModule,
         CalendarModule,
         PanelModule,
+        MultiSelectModule,
         AutoCompleteModule,
         FormsModule,
         NgbDropdownModule.forRoot()

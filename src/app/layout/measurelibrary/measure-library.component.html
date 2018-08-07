@@ -21,7 +21,7 @@
                                         <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="ageFilter" [min]="0" [max]="100" (onChange)="dt.filter($event.value, 'age', 'gt');"></p-slider>
                                     </div>
                             <input *ngSwitchDefault pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
-                            <p-dropdown *ngSwitchCase="'gender'" [options]="genderTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                            <p-multiSelect *ngSwitchCase="'status'" [filter]="false" [options]="statusTypes" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
                         </th>
                         
                     </tr>
@@ -30,8 +30,8 @@
                     <tr >
                         <td *ngFor="let col of columns" style="cursor: pointer;" (click)="copytoCreator(rowData['id'], 1)" [ngSwitch]="col.field">
                                 <span *ngSwitchCase="'status'" >
-                                    <i class="text-primary" *ngIf="rowData['status'] != 'In-active'">{{rowData['status']}}</i>
-                                    <i class="text-danger" *ngIf="rowData['status'] == 'In-active'">Decommisioned</i>
+                                    <i class="text-primary" *ngIf="rowData['status'] != 'In-active'">Active</i>
+                                    <i class="text-danger" *ngIf="rowData['status'] == 'In-active'">Decommission</i>
                                 </span>
                                 <span *ngSwitchDefault>
                                     {{rowData[col.field]}}

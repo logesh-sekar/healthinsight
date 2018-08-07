@@ -46,6 +46,7 @@ export class MeasureworklistComponent implements OnInit {
        this.gapsService.setMeasureStatus(id, status).subscribe( (res: any) => {
         if (res.status === 'SUCCESS') {
             this.msgService.success('Measure approved Successfully');
+            this.router.navigate(['/measureworklist']);
           } else {
             this.msgService.success(res.message);
           }

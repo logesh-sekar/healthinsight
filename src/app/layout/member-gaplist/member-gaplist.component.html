@@ -54,7 +54,10 @@
                                             <a *ngSwitchCase="'measureTitle'" [routerLink]="['/member-gap/', rowData.qualityMeasureId, memberID]">
                                                 {{rowData[col.field]}}
                                             </a>
-                                            <span *ngSwitchCase="'dateTime'">
+                                            <span *ngSwitchCase="'start_date'">
+                                                    {{rowData[col.field] | date}}
+                                            </span>
+                                            <span *ngSwitchCase="'end_date'">
                                                     {{rowData[col.field] | date}}
                                             </span>
                                             <span *ngSwitchDefault>

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class MeasurelibraryComponent implements OnInit {
     programType = 'test';
     programValue = 'test';
+    statusTypes = [{label: 'Active', value: 'Approved'}, {label: 'Decommission', value: 'In-active'}];
     constructor(private gapsService: GapsService, private route: ActivatedRoute, public router: Router) {
         this.route.params.subscribe(params => {
             if (params['type']) {

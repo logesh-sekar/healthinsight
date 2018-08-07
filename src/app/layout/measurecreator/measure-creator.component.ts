@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class MeasurecreatorComponent implements OnInit {
 
   public myForm: FormGroup;
-
+  disableForm = false;
   public submitted: boolean;
   measureId: string;
   title: string;
@@ -34,6 +34,25 @@ export class MeasurecreatorComponent implements OnInit {
             this.measureId = params['measureId'];
             this.type = params['type'];
             this.title = (this.type === '1' ) ? 'Measure Editor' : 'Measure Creator';
+        });
+        this.myForm = this._fb.group({
+          programName: ['', [Validators.required]],
+          denominator: [],
+          name: ['', [Validators.required]],
+          numerator: [],
+          description: [],
+          targetAge: [],
+          numeratorExclusions: [],
+          denomExclusions: [],
+          measureDomain: [],
+          target: [],
+          measureCategory: [],
+          type: [],
+          clinocalCondition: [],
+          startDate: [],
+          endDate: [],
+          id: [],
+          Decommisioned: []
         });
     }
 
@@ -56,7 +75,7 @@ export class MeasurecreatorComponent implements OnInit {
   this.gapsService.getMeasureTypes().subscribe((data: any) => {
     this.measureTypes = [];
     data.forEach(element => {
-      this.measureTypes.push({label: element.name, value: element.value});
+      this.measureTypes.push({label: element.name, value: element.name});
     });
   });
    if (this.measureId) {
@@ -64,28 +83,14 @@ export class MeasurecreatorComponent implements OnInit {
       this.setMeasureInfo(data);
     });
    }
-      this.myForm = this._fb.group({
-        programName: ['', [Validators.required]],
-        denominator: [],
-        name: ['', [Validators.required]],
-        numerator: [],
-        description: [],
-        targetAge: [],
-        numeratorExclusions: [],
-        denomExclusions: [],
-        measureDomain: [],
-        target: [],
-        measureCategory: [],
-        type: [],
-        clinocalCondition: [],
-        startDate: [],
-        endDate: [],
-        id: [],
-        Decommisioned: []
-      });
+      
   }
 
  setMeasureInfo(measureInfo) {
+   if (measureInfo.isActive === 'N') {
+    this.myForm.disable();
+    this.disableForm = true;
+   }
    this.myForm.controls['programName'].setValue(measureInfo.programName);
    this.myForm.controls['name'].setValue(measureInfo.name);
    this.myForm.controls['description'].setValue(measureInfo.description);
@@ -126,6 +131,7 @@ export class MeasurecreatorComponent implements OnInit {
       // call API to save
       // ...
       model.status = 'New';
+      model.target = parseInt(model.target, 10);
       model.startDate = this.formatDate(model.startDate);
       model.endDate = this.formatDate(model.endDate);
     this.gapsService.createMeasure(model).subscribe( (res: any) => {
@@ -144,6 +150,7 @@ export class MeasurecreatorComponent implements OnInit {
    // call API to save
    // ...
    model.status = 'Open';
+   model.target = parseInt(model.target, 10);
    model.startDate = this.formatDate(model.startDate);
    model.endDate = this.formatDate(model.endDate);
    // console.log(model);
@@ -169,6 +176,7 @@ export class MeasurecreatorComponent implements OnInit {
     this.myForm.controls['endDate'].markAsTouched();
     model.isActive = 'N';
     model.status = 'In-active';
+    model.target = parseInt(model.target, 10);
     model.startDate = this.formatDate(model.startDate);
     model.endDate = this.formatDate(model.endDate);
     if (this.myForm.valid) {
@@ -212,4 +220,5 @@ export interface Measurecreator {
     endDate: string;
     status: string;
     id: string;
+    target: any;
    }

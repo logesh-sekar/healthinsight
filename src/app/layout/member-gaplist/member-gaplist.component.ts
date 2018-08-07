@@ -26,7 +26,10 @@ export class MemberGapListComponent implements OnInit {
     statusTypes =  [
         { label: 'Select', value: '' },
         { label: 'Open', value: 'Open' },
-        { label: 'Closed', value: 'Closed' }
+        { label: 'Open with Provider', value: 'Open with Provider' },
+        { label: 'Close by Provider', value: 'Close by Provider' },
+        { label: 'Open with Payer', value: 'Open with Payer' },
+        { label: 'Close by Payer', value: 'Close by Payer' }
     ];
     priorityTypes =  [
         { label: 'Select', value: '' },
