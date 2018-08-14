@@ -73,4 +73,11 @@ export class GapsService {
     updateCloseGaps(closeGapModel, memberId, gapId) {
         return this.http.post(`http://healthinsight:8082/curis/closeGaps/${memberId}/${gapId}`, { 'careGaps': [closeGapModel]});
     }
+
+    getTableName(){
+     return this.http.get(`http://healthinsight:8082/curis/measure_configurator/config_data`);
+    }
+    getColumnName(){
+      return this.http.get(`http://healthinsight:8082/curis/measure_configurator/config_data`);
+      }
 }
